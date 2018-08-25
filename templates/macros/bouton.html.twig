@@ -1,0 +1,28 @@
+{% macro bouton(titre, url, window_target , class_sup, glyph) %}
+
+    {% if class_sup == '' %}
+        {% set class_list = "btn-default" %}
+    {% else %}
+        {% set class_list = class_sup %}
+    {% endif %}
+
+    {% if window_target == '' %}
+        {% set target = '' %}
+    {% else %}
+        {% set target = " target=\"" ~ window_target ~ "\"" %}
+    {% endif %}
+
+    {% if url == '' %}
+        {% set rt = " href=\"#\"" %}
+    {% else %}
+        {% set rt = "href=\"" ~ url ~ "\"" %}
+    {% endif %}
+
+    <a class="btn {{ class_list|raw }}" role="button" {{ rt|raw }}{{ target|raw }}>
+
+    {% if glyph != '' %}
+        <span class="glyphicon glyphicon-{{ glyph }}"></span>"
+    {% endif %}
+    {{ titre|raw }}</a>
+
+{% endmacro %}

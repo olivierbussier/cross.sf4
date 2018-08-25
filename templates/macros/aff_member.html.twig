@@ -1,0 +1,24 @@
+
+{% macro aff_members(members) %}
+
+    {% for member in members %}
+
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="text-right">
+                    {%  if member[1]|length > 0 %}
+                        <a href="#" data-toggle="modal" data-target="#exampleModal"
+                           data-imagename="{{ asset('team/' ~ member[1]) }}"
+                           data-personnam="{{ member[0] }}">{{ member[0] }}</a>
+                    {%  else %}
+                        {{ member[0] }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-xs-6">
+                {{ member[2] }}
+            </div>
+        </div>
+
+    {% endfor %}
+{% endmacro %}

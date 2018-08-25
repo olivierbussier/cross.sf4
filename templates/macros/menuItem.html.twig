@@ -1,0 +1,3 @@
+{% macro item(menuLink, menuTitre, target , class) %}
+<li><a {% if target %} target="{{ target }}" {% endif %} {% if class  %} class="{{ class }}" {% endif %} href="{{ url(menuLink) }}">{{ menuTitre }}</a></li>
+{% endmacro %}

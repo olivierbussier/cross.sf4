@@ -1,0 +1,3 @@
+{% macro get_config(item) %}
+    {% return constant('App\Classes\Config::' ~ item) %}
+{% endmacro %}
