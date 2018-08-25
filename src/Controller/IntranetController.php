@@ -14,4 +14,18 @@ class IntranetController extends AbstractController
     {
         return $this->render('intranet/index.html.twig');
     }
+    /**
+     * @Route("/intranet/admin_resultats", name="intranet_admin_resultats")
+     */
+    public function admin_resultats()
+    {
+        return $this->render('intranet/admin_resultats.html.twig');
+    }
+    /**
+     * @Route("/intranet/admin_blog", name="intranet_admin_blog")
+     */
+    public function admin_blog()
+    {
+        return $this->render('intranet/admin_blog.html.twig');
+    }
 }

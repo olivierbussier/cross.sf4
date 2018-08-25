@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Parcours 10Km.kml</name>
+	<StyleMap id="msn_ylw-pushpin01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin10">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin60">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin101">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin1">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin21">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin6000">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin100">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin6">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin2">
+		<IconStyle>
+			<color>ff00ffaa</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin200">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin6000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin100</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin60</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin101</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Parcours 10Km</name>
+		<open>1</open>
+		<Placemark>
+			<name>Parcours 10Km</name>
+			<styleUrl>#msn_ylw-pushpin2</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					5.802058206815168,45.23774019986522,0 5.802071391067578,45.23773203453239,0 5.80177198112448,45.23763795164151,0 5.801514716410487,45.23760320272614,0 5.801345093545254,45.23754845175697,0 5.801379054350941,45.2374325370009,0 5.801496726466933,45.23731493516674,0 5.801579292277141,45.23730315837481,0 5.80179264630043,45.2373775796062,0 5.801796353740285,45.2373792503851,0 5.802112729728373,45.23749667430761,0 5.802410936414598,45.23760487122815,0 5.802626288904698,45.23769624671613,0 5.802939100993429,45.23771217831758,0 5.803191286129503,45.23778967295441,0 5.803471773079069,45.23788395907814,0 5.803581519595285,45.23787038583724,0 5.803701477126593,45.23781770752953,0 5.803663324355171,45.23777519905943,0 5.803358952511061,45.23765534349668,0 5.803352416078647,45.23765369257876,0 5.803102126253721,45.23756036212657,0 5.802806825064979,45.23746177359617,0 5.802514499450984,45.23735679756236,0 5.802271195366025,45.23725641158648,0 5.801913168609342,45.23710255439817,0 5.80190580943857,45.23710092457142,0 5.801560373850596,45.23693981856136,0 5.801553683147085,45.23693855920439,0 5.801242967756927,45.23681456408397,0 5.801042684750888,45.23672692728567,0 5.800870269176571,45.23668723281588,0 5.800486853231178,45.23662826004389,0 5.800190247754418,45.23657846160332,0 5.79996548471208,45.23648855817341,0 5.799961019293325,45.23648830081492,0 5.799834797426606,45.23639625168311,0 5.799742857069199,45.23629080816236,0 5.799682104525044,45.23612583328931,0 5.799649041435897,45.23584094137548,0 5.799656149809486,45.23563849239374,0 5.799634567884859,45.23510266872577,0 5.799659830044623,45.23461555447493,0 5.799693965958259,45.23428306297515,0 5.799785352669938,45.23394807636793,0 5.799908007264878,45.2336039689249,0 5.799908521329968,45.23345558189432,0 5.79979480251996,45.23326442222112,0 5.799457318324111,45.23294776918618,0 5.799277939412266,45.23277432435016,0 5.79898205680681,45.23250096564095,0 5.798711458644972,45.23221205984574,0 5.798708361152709,45.23220869179588,0 5.798471472100135,45.23194052712562,0 5.798113319689726,45.23159892352636,0 5.797980286957277,45.23144558033781,0 5.797971880311577,45.23134861952355,0 5.798076597499957,45.23119679715291,0 5.798253859654333,45.23098612172807,0 5.798533445239356,45.23065148623393,0 5.799046256749572,45.23006443969946,0 5.799296239898293,45.22979539553264,0 5.79936158489099,45.22977988743751,0 5.799430540467179,45.22980799299073,0 5.800476833860984,45.23052483334621,0 5.800836593665331,45.23083762546227,0 5.80133612378428,45.23124316911657,0 5.801885293920945,45.2317133349849,0 5.802256685107549,45.23206443315972,0 5.802290088804578,45.23212391435549,0 5.802249141265119,45.23219107733628,0 5.802087417567066,45.23231808306606,0 5.802076793575299,45.23232661171999,0 5.801922328266695,45.23243685535514,0 5.801867693308118,45.23248051871744,0 5.801838685984235,45.23254634774626,0 5.801868835483292,45.23259311017574,0 5.802175773386047,45.23290799237491,0 5.802396094565747,45.23308014308886,0 5.802542073398689,45.233237253372,0 5.80254260098886,45.23330661549061,0 5.802488345670842,45.23337090004367,0 5.802381178710137,45.2334129199024,0 5.802225313904934,45.23349239028025,0 5.801991661902508,45.23355870093117,0 5.801982579617365,45.23355777737496,0 5.801788382304853,45.23363364734038,0 5.801745826387683,45.23367438189806,0 5.801784376631121,45.23371607221348,0 5.801852919292587,45.23377077263941,0 5.801909366514844,45.23380285029801,0 5.80197976628082,45.23381215413456,0 5.80209730324656,45.23379952895493,0 5.802196878597585,45.23377922014289,0 5.802289858342689,45.2338232448867,0 5.80230488020942,45.23383016154238,0 5.802598392098153,45.23388274373698,0 5.802604354454102,45.23388898254625,0 5.802995490639162,45.23403961395727,0 5.80392023196076,45.23441776901133,0 5.805239043109147,45.23491169621776,0 5.806112450112408,45.23517512377618,0 5.806585372106355,45.23531523441758,0 5.807060532998147,45.23557715045105,0 5.807069462521469,45.23558108506377,0 5.807479643068616,45.23580924053638,0 5.808445174331059,45.23633649813513,0 5.808453381508536,45.23634940871403,0 5.808625827582477,45.23647541559526,0 5.808946167246432,45.23660610361712,0 5.808947681328592,45.23660761051004,0 5.809551868836376,45.23682921405495,0 5.810271535180654,45.23708009424264,0 5.811120272733612,45.23746629861554,0 5.811766609441906,45.23784208618623,0 5.811957545785762,45.23794400114453,0 5.81196671593726,45.2379477847641,0 5.811987551184828,45.2380065312213,0 5.81193518161145,45.23807078003113,0 5.811932324080158,45.23807358967828,0 5.811764505308439,45.23818681952683,0 5.81165318077125,45.23829048320627,0 5.811612410121533,45.23837580377832,0 5.811619931450213,45.23838990870318,0 5.811670248984533,45.2384662677126,0 5.813389674626739,45.2394502386203,0 5.813487384462002,45.23956315612092,0 5.813487207582611,45.23956980612882,0 5.813459763291551,45.23962495914525,0 5.813362830741284,45.23970397060342,0 5.81303719092795,45.23991675199837,0 5.812579840185952,45.24024481650919,0 5.812126890832428,45.24063687577423,0 5.811407364643357,45.24127113239019,0 5.810398835372101,45.24082371185053,0 5.809579141072585,45.2405074765017,0 5.808847779873223,45.24027353613974,0 5.808194301047591,45.24012957023281,0 5.807647491189139,45.24001858358002,0 5.807182572063701,45.23989836173421,0 5.806927716432202,45.23983013743886,0 5.806608340260453,45.23949600709511,0 5.806296212809647,45.2392287051424,0 5.805991340394494,45.23897175560603,0 5.805658257696131,45.23871048444774,0 5.805252302097335,45.2384793145422,0 5.804804987445735,45.2382810123558,0 5.803775712570665,45.23779898895776,0 5.802300447780075,45.23723992432243,0 5.801353078761881,45.23682794608318,0 5.801004501217433,45.23668758595572,0 5.800468090995972,45.23658762923236,0 5.800033722193005,45.23647444785694,0 5.799799669493105,45.2362641894948,0 5.799680574472519,45.23558407686082,0 5.799713331023011,45.23438792998918,0 5.799792117870897,45.23399679988349,0 5.799915516791638,45.23367687629954,0 5.799937745787343,45.23348767597533,0 5.799780296147857,45.23322598036071,0 5.799602206523728,45.23306971988399,0 5.798819280073618,45.23237847881503,0 5.798423227820924,45.23191134811104,0 5.797927322039625,45.23145313153485,0 5.797367558909336,45.23109072411906,0 5.796767405088737,45.23085177818593,0 5.7961804379027,45.23066755231294,0 5.796028941742084,45.23059909367746,0 5.795543459372978,45.23043280595629,0 5.794963460519593,45.23034741093661,0 5.794461142095237,45.23034693070156,0 5.793096919219851,45.23027268858174,0 5.792274065028186,45.23017824749366,0 5.792266824464917,45.2301800293756,0 5.79163268519888,45.23019250910993,0 5.791429083654355,45.2301384380138,0 5.791100206552624,45.22993630847079,0 5.790688443179426,45.22969572010377,0 5.790400189111312,45.22947144179401,0 5.790218457297193,45.22936043406091,0 5.79005763718135,45.22928816999377,0 5.789981032504407,45.22924170591043,0 5.789857441501976,45.22923125256431,0 5.78977285965345,45.2292370029464,0 5.789723273425906,45.22926603225452,0 5.789699939217801,45.22933826842695,0 5.789734178073291,45.22944442674559,0 5.789743331357542,45.22945394721121,0 5.789795600752655,45.22972800467135,0 5.789763181897774,45.22998393383921,0 5.789522903733088,45.23018697133118,0 5.789362319823839,45.23033557960068,0 5.789062810408609,45.23035606620827,0 5.788791658502001,45.23037889620072,0 5.788565277837547,45.23042949149528,0 5.788418582888159,45.23048305412133,0 5.788310416867919,45.23056245318458,0 5.788640741377604,45.23089465452161,0 5.788891570211828,45.23109794796206,0 5.789031428333711,45.23115802271481,0 5.789215007080955,45.23117665599887,0 5.789484887377626,45.23124029662158,0 5.789492602133839,45.23124269453908,0 5.789846647155938,45.23140354428712,0 5.790028871475412,45.23154386060743,0 5.790399043396408,45.23189378986013,0 5.790663935957713,45.23206253214403,0 5.791150358263049,45.23250427701844,0 5.791154530414113,45.23250767438174,0 5.791521556844741,45.23286448960078,0 5.791676534107523,45.23305849458156,0 5.791763255640239,45.23319653003625,0 5.791990002776286,45.23338449933528,0 5.792238181970881,45.23357507965365,0 5.792240871815468,45.23357480826793,0 5.792351431533389,45.23365988174484,0 5.792352669793043,45.23366383694813,0 5.792356759631931,45.23367050568901,0 5.79236019787722,45.23367934636272,0 5.792387616700392,45.23376489675032,0 5.792560284214259,45.23394434777028,0 5.792790674896891,45.23420760592149,0 5.793007439067424,45.23446787330546,0 5.793078164983507,45.23460399468808,0 5.79318422483373,45.23489674987047,0 5.79323200620445,45.23499651045623,0 5.793380013630404,45.23512404993728,0 5.793567002125393,45.23527734707845,0 5.793717754789145,45.23535164669625,0 5.793981390437397,45.23535709454783,0 5.794283282560757,45.23536208479968,0 5.794395378171431,45.23539136087554,0 5.794400483808284,45.23539628227036,0 5.794497458788211,45.23546827234461,0 5.794601631049348,45.23562323544626,0 5.794604234744487,45.23562553942092,0 5.79474763275819,45.23579898071801,0 5.794895402560245,45.23589568360689,0 5.794899258294737,45.23589886305898,0 5.795204353060568,45.23603842464695,0 5.795529129486541,45.23612888508372,0 5.795531749081841,45.23612932204534,0 5.795772125535404,45.23618413891116,0 5.79606625979765,45.23628430551882,0 5.796219290307474,45.2364241684862,0 5.796380145443205,45.23660429496968,0 5.796446056583411,45.23673221147519,0 5.796506687456913,45.23686088991237,0 5.796553091880757,45.2369239562903,0 5.796555075360277,45.23692584837679,0 5.796632816862573,45.23699823718316,0 5.796853895198271,45.23715340504128,0 5.797150457717233,45.23735976516015,0 5.797485853093685,45.23757297419006,0 5.797736484858607,45.23775101197051,0 5.797738400155367,45.23775154175493,0 5.797969866542305,45.23791669165523,0 5.798167861612884,45.23836698394437,0 5.79823490759429,45.23862329666201,0 5.798404719035899,45.23891489678697,0 5.798553608071879,45.23924881660729,0 5.798697529877652,45.23948381874731,0 5.799091872284401,45.2399345420358,0 5.799331619854597,45.24010016542092,0 5.799503154758159,45.24016917072643,0 5.800268181542041,45.24050937499613,0 5.800527435573324,45.24074717340513,0 5.800534056071054,45.24075122325795,0 5.800694634123909,45.24090691728445,0 5.801199072295901,45.24143458789482,0 5.801511666430179,45.24175312312718,0 5.801779198189765,45.24202774565019,0 5.802084398203826,45.24238244236696,0 5.802170209515802,45.24255681464357,0 5.802170754849301,45.24273701253819,0 5.802168415940894,45.2428599062644,0 5.802225964536502,45.24302003876179,0 5.802403450594113,45.24340688780416,0 5.802406948196321,45.24341004180787,0 5.802410379170507,45.24341578575782,0 5.802549431279074,45.24366799983952,0 5.802691830899169,45.24382298887329,0 5.802916149706199,45.24399942068074,0 5.803084528500346,45.24409037081003,0 5.80326073058457,45.24409253384124,0 5.803493858537951,45.24409541344931,0 5.803767085039095,45.24418828446243,0 5.804005108350017,45.24432564671518,0 5.804366720780716,45.24454134993109,0 5.804721351906941,45.24477980153193,0 5.805032127054317,45.24497315529215,0 5.805445994886263,45.24524376318638,0 5.80569177091623,45.2454055113112,0 5.806038345483316,45.24561892601892,0 5.806282884442617,45.24572732349822,0 5.806413860706972,45.24576169117984,0 5.806558512641922,45.24569690632669,0 5.806647122039601,45.24564330690289,0 5.806761259389193,45.24547353076697,0 5.807035290164664,45.24505299377062,0 5.807041036325471,45.24505443142063,0 5.807303534973829,45.24459948973412,0 5.80743906643826,45.24434136214336,0 5.807440076102692,45.24434452010404,0 5.807471998671181,45.24417290579531,0 5.807370290950735,45.2438612819168,0 5.807280269036072,45.24360204928959,0 5.807195875132408,45.24336402523674,0 5.806913028999512,45.24301278204321,0 5.806569209118326,45.24265634000145,0 5.80625087675206,45.24232648725621,0 5.806083284454719,45.24209086758566,0 5.806056371751014,45.24191375400868,0 5.806092799943516,45.24171256994758,0 5.806156608778073,45.24151487165259,0 5.806188417258403,45.2414044614266,0 5.806360678174373,45.24137565404832,0 5.80668798755883,45.24125138140352,0 5.807143194102428,45.24097480472484,0 5.8072753007623,45.24087680289849,0 5.807562753984406,45.24066411300488,0 5.807696733917133,45.24049586327893,0 5.807784014419079,45.24028225395416,0 5.807840226035341,45.24013827623412,0 5.807835298130097,45.24010054369228,0 5.807764225149636,45.24003052435847,0 5.80721963263831,45.23988870993161,0 5.80693813860173,45.23981394456632,0 5.806670915959815,45.23951498075706,0 5.806409596690192,45.23927894833124,0 5.806151301846878,45.23905667841849,0 5.805839192754427,45.23882060776008,0 5.805461527185429,45.23857865392805,0 5.805037026236358,45.2383641169218,0 5.804379266707374,45.23806768887661,0 5.804011528396751,45.23789005883824,0 5.803826829084507,45.23779841450329,0 5.803674418449994,45.23781445117328,0 5.803513521209283,45.23786784396666,0 5.803389809584179,45.23783741667621,0 5.803091195956514,45.23774351652087,0 5.803090108003566,45.23774255122171,0 5.802750339301273,45.23768049129831,0 5.802533127752465,45.23764087340739,0 5.802332615709736,45.23756656649922,0 5.802326335248164,45.23756814583172,0 5.801911383620886,45.23739944442491,0 5.801617233757819,45.23729021496332,0 5.801458648092559,45.23726588687824,0 5.801287050334317,45.23736224824398,0 5.801283129033752,45.23736594140207,0 5.801240769336462,45.23753454168158,0 5.801263091178877,45.23767503309473,0 5.801452878280431,45.23776479866097,0 5.801696483155703,45.23784608543161,0 5.801965845825312,45.23793431322048,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Folder>
+			<name>Infrastructure</name>
+			<Placemark>
+				<name>Signaleur 1</name>
+				<open>1</open>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.800043126257532</longitude>
+					<latitude>45.23367790692197</latitude>
+					<altitude>0</altitude>
+					<heading>-30.5041798510755</heading>
+					<tilt>0</tilt>
+					<range>814.1186558771086</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.799934566113699,45.2335112434008,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 2</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.799902361284095</longitude>
+					<latitude>45.23019685135515</latitude>
+					<altitude>0</altitude>
+					<heading>-30.50427970348923</heading>
+					<tilt>0</tilt>
+					<range>831.8557894439108</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.799337408017546,45.22970958840439,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 4</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.793816031007548</longitude>
+					<latitude>45.22935514092109</latitude>
+					<altitude>0</altitude>
+					<heading>-30.5092804224362</heading>
+					<tilt>20.76640356788959</tilt>
+					<range>347.3054282209566</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.794214363556234,45.23030537779155,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 5</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.789921884440981</longitude>
+					<latitude>45.22923114470399</latitude>
+					<altitude>0</altitude>
+					<heading>-27.62068230213783</heading>
+					<tilt>22.01195124395722</tilt>
+					<range>945.2442015302859</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.789706863014796,45.22921049487373,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 6</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.788657139424064</longitude>
+					<latitude>45.2326493542068</latitude>
+					<altitude>0</altitude>
+					<heading>-35.33100760468055</heading>
+					<tilt>23.75491303105809</tilt>
+					<range>1377.735192116981</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.78937478986322,45.23028525017503,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 7</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.788511663824319</longitude>
+					<latitude>45.23069263335399</latitude>
+					<altitude>0</altitude>
+					<heading>-39.1767761150829</heading>
+					<tilt>52.3586679554488</tilt>
+					<range>425.6330275805175</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin01</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.788199259332783,45.23055986847438,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 22</name>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.804617694186554</longitude>
+					<latitude>45.24564258637783</latitude>
+					<altitude>0</altitude>
+					<heading>-44.62419994586128</heading>
+					<tilt>60.00626563714732</tilt>
+					<range>468.848990743509</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin200</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.805453886339834,45.24539982516032,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 23</name>
+				<open>1</open>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.805083275402255</longitude>
+					<latitude>45.24118946924941</latitude>
+					<altitude>0</altitude>
+					<heading>-56.8417255017875</heading>
+					<tilt>22.46675027697447</tilt>
+					<range>1249.225425549144</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin200</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.807858055449646,45.24003294123505,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 24</name>
+				<open>1</open>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.807187219365224</longitude>
+					<latitude>45.24066714429288</latitude>
+					<altitude>0</altitude>
+					<heading>-56.82407364369799</heading>
+					<tilt>49.09540652922225</tilt>
+					<range>759.8218034168947</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin200</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.806936846141911,45.23981998570388,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 25</name>
+				<open>1</open>
+				<description>Optionnel</description>
+				<LookAt>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.805967427257784</longitude>
+					<latitude>45.23911418511399</latitude>
+					<altitude>0</altitude>
+					<heading>-60.33580382833783</heading>
+					<tilt>4.25203886380946</tilt>
+					<range>357.2063891827825</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin200</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.806004094466473,45.23898223839264,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 26</name>
+				<open>1</open>
+				<Camera>
+					<gx:TimeStamp><when>2015-06-07T10:54:39.188720703Z</when>
+</gx:TimeStamp>
+					<gx:ViewerOptions>
+						<gx:option enabled="0" name="historicalimagery"></gx:option>
+						<gx:option name="sunlight"></gx:option>
+						<gx:option enabled="0" name="streetview"></gx:option>
+					</gx:ViewerOptions>
+					<longitude>5.802570052099725</longitude>
+					<latitude>45.2376045553956</latitude>
+					<altitude>354.8347334361721</altitude>
+					<heading>-101.3135450231087</heading>
+					<tilt>0.01558635014587785</tilt>
+					<roll>-45.61940229743627</roll>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</Camera>
+				<styleUrl>#msn_ylw-pushpin200</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.803664600621783,45.23777647048816,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 27</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.801355757094518</longitude>
+					<latitude>45.23532488400188</latitude>
+					<altitude>0</altitude>
+					<heading>-39.96553030103351</heading>
+					<tilt>44.45292357942966</tilt>
+					<range>852.4976007694996</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.798830109498175,45.23240773283351,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 28</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.798357975076096</longitude>
+					<latitude>45.23294008019994</latitude>
+					<altitude>0</altitude>
+					<heading>-39.96765865178391</heading>
+					<tilt>44.45282622552671</tilt>
+					<range>837.0243325626328</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.797847208385994,45.23141198928111,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 29</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.801469628430018</longitude>
+					<latitude>45.23514708850828</latitude>
+					<altitude>0</altitude>
+					<heading>-39.96544952185644</heading>
+					<tilt>44.45294252304513</tilt>
+					<range>855.5084590518021</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.80510314802604,45.23485676692729,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 30</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.806389421709985</longitude>
+					<latitude>45.23611940465815</latitude>
+					<altitude>0</altitude>
+					<heading>-39.96195641051968</heading>
+					<tilt>44.45302708047779</tilt>
+					<range>868.9478089954001</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.808574403675884,45.23646610844329,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 31</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.811565967121108</longitude>
+					<latitude>45.23855572075011</latitude>
+					<altitude>0</altitude>
+					<heading>-39.95794294261502</heading>
+					<tilt>36.6864968654444</tilt>
+					<range>451.446360163948</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.811998290272006,45.23796664240673,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 32</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.812196626865236</longitude>
+					<latitude>45.23999700883238</latitude>
+					<altitude>0</altitude>
+					<heading>-39.9578271674422</heading>
+					<tilt>43.47859350540712</tilt>
+					<range>516.7869793945039</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.813505458094072,45.23957503974817,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 33</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.810633914878842</longitude>
+					<latitude>45.24140106023776</latitude>
+					<altitude>0</altitude>
+					<heading>-39.95893683444783</heading>
+					<tilt>43.47789956213759</tilt>
+					<range>484.1436070055328</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.811383177477108,45.24129651195623,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 34</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.810633914878842</longitude>
+					<latitude>45.24140106023776</latitude>
+					<altitude>0</altitude>
+					<heading>-39.95893683444783</heading>
+					<tilt>43.47789956213759</tilt>
+					<range>484.1436070055328</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin21</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.80826598183076,45.24011031269536,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 35</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.792041612040029</longitude>
+					<latitude>45.23427834762333</latitude>
+					<altitude>0</altitude>
+					<heading>-39.97213707396243</heading>
+					<tilt>60.00202458319421</tilt>
+					<range>259.3284670206036</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin20</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.792366347857785,45.23367522021627,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 36</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.793283963930151</longitude>
+					<latitude>45.23602031532467</latitude>
+					<altitude>0</altitude>
+					<heading>-39.97125498432937</heading>
+					<tilt>60.00491108054031</tilt>
+					<range>386.5548028461228</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin20</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.793623493832564,45.23534999490479,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 37</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.793283963930151</longitude>
+					<latitude>45.23602031532467</latitude>
+					<altitude>0</altitude>
+					<heading>-39.97125498432937</heading>
+					<tilt>60.00491108054031</tilt>
+					<range>386.5548028461228</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin20</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.794578835609152,45.23554299276538,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Signaleur 38</name>
+				<LookAt>
+					<gx:TimeStamp><when>2000</when>
+</gx:TimeStamp>
+					<longitude>5.79636908530396</longitude>
+					<latitude>45.23769219992995</latitude>
+					<altitude>0</altitude>
+					<heading>-39.96906451547329</heading>
+					<tilt>60.00559359308854</tilt>
+					<range>352.4560147305625</range>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_ylw-pushpin20</styleUrl>
+				<Point>
+					<gx:drawOrder>1</gx:drawOrder>
+					<coordinates>5.797992367251741,45.23794064773158,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

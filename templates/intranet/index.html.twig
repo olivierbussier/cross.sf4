@@ -14,19 +14,43 @@
             <h3>Bienvenue sur l'Intranet {{ app.user.prenom ~ ' ' ~ app.user.nom }} , </h3>
         </div>
 
-        <div class="container">
-            <div class="col-xs-12">
-                <h3>Pour vous déconnecter :</h3>
-            </div>
-            <div class="col-xs-12">
-                {{  control.bouton(
-                    ' Déconnexion',
-                    url('deconnexion'),
-                    '',
-                    'btn-block btn-default',
-                    'quit')
-                }}
-            </div>
+        <div class="col-xs-12">
+            <h3>Intranet publication des résultats</h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            {{ control.bouton(
+                " Ajout d'une série de réaultats",
+                url('intranet_admin_resultats'),
+                '',
+                'btn-block btn-default',
+                'save') }}
+        </div>
+
+        <div class="col-xs-12">
+            <h3>Intranet publication des contenus</h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            {{ control.bouton(
+                " Admin des publications de la page d\'accueil" ,
+                url('intranet_admin_blog'),
+                '',
+                'btn-block btn-default',
+                'folder-open') }}
+        </div>
+
+        <div class="col-xs-12">
+            <h3>Pour vous déconnecter :</h3>
+        </div>
+
+        <div class="col-xs-12">
+            {{  control.bouton(
+                ' Déconnexion',
+                url('deconnexion'),
+                '',
+                'btn-block btn-default',
+                'quit') }}
         </div>
 
     </div>

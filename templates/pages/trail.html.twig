@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parcours trail{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+	<div class="container">
+
+		<div class="col-xs-12">
+			<h3>Le Trail découverte</h3>
+		</div>
+
+		<div class="col-xs-12">
+			<p>C'est notre plus grand parcours, situé à deux pas de Grenoble, mais dans un environnement semi-rural. Avec ses 15Km et 850m de dénivelée, tracés le long du massif de la charteuse, ce parcours combine technicité et plaisir. Il traverse les torrents à claves, typiques des falaises de Chartreuse, disséminés le long du massif.</p>
+			<p>Il est accessible aux Cadets, Juniors, Seniors et Masters.</p>
+			<p>Le départ de la course est donné à 9h00</p>
+			<p>Deux ravitaillements sont prévus le long du parcours</p>
+			<ul>
+				<li>Un ravitaillement leger avec boissons est prévu sur le chemin des réservoirs, environ 4Km après le départ</li>
+				<li>Un ravitaillement à environ 10Km du départ</li>
+			</ul>
+			<p>Les tarifs sont indiqués sur la page <a href="{{ url('inscription') }}">Inscriptions</a></p>
+			<p>Ci-dessous vous trouverez le parcours interactif ainsi que le profil</p>
+		</div>
+
+		<div class="col-xs-12">
+			{{ control.bouton(
+				"S'inscrire en ligne",
+				"https://inscriptions.perfevent.com/biviers2018/register/28802",
+				'_inscr',
+				"btn-block btn-success btn-lg") }}
+		</div>
+
+		<div class="col-xs-12">
+			<iframe width="100%" height="800" frameborder="0" scrolling="no" src="{{ asset('maps/maps.php?p=trail') }}"></iframe>
+		</div>
+
+		<div class="col-xs-12">
+			<img src="{{ asset('maps/deniv_trail.jpg') }}" class="w100">
+		</div>
+
+	</div>
+
+{% endblock %}
+
