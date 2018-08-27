@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Blog;
 use App\Entity\Resultat;
 use App\Form\ChoixCourseType;
+use App\Form\EcrireType;
+use Swift_Mailer;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -102,7 +104,12 @@ class BaseController extends AbstractController
         $formChoix = $this->createFormBuilder()
             ->add('anneeCross',ChoiceType::class, [ 'choices' => $annees  ])
             ->add('course',ChoiceType::class, [ 'choices' => $courses ])
-            ->add('Afficher les résultats', SubmitType::class)
+            ->add('Afficher les résultats', SubmitType::class, [
+                'label' => 'Afficher les résultats',
+                'attr' => [
+                    'class' => 'btn-block btn success'
+                ]
+            ])
             ->getForm();
         ;
 
@@ -158,8 +165,31 @@ class BaseController extends AbstractController
     /**
      * @Route("/ecrire", name="ecrire")
      */
-    public function ecrire()
+    public function ecrire(Request $request,Swift_Mailer $mailer)
     {
-        return $this->render('pages/ecrire.html.twig');
+        $form = $this->createForm(EcrireType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $contactFormData = $form->getData();
+            $message = (new \Swift_Message('You Got Mail!'))
+                ->setFrom($contactFormData['from'])
+                ->setTo('contact@cross-biviers.fr')
+                ->setBody(
+                    $contactFormData['message'],
+                    'text/plain'
+                    )
+           ;
+
+           $res = $mailer->send($message);
+
+           //return $this->redirectToRoute('ecrire');
+        }
+
+        return $this->render('pages/ecrire.html.twig',[
+            'formEcrire' => $form->createView()
+        ]);
     }
 }

@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Whos Who{% endblock %}
+
+    {% set bureau = [
+        ['Guy Chaboud'						, 'Chaboud-Guy.jpg'				,'Président'],
+        ['Alain Leduc'						, 'Leduc-Alain'					,'Vice-président'],
+        ['Mario Mitaud'						, 'Mitaud-Mario.jpg'			,'Secrétaire'],
+        ['Annik Kroes'						, 'Kroes-Annik.jpg'				,'Secrétaire'],
+        ['Olivier Bussier'					, 'Bussier-Olivier.jpg'			,'Trésorier/Web'],
+        ['Patrick Torres'					, 'Torres-Patrick.jpg'			,'Référend technique']
+    ] %}
+
+    {%  set animation = [
+        ['Elisabeth Joppe'					, 'Joppe-Elisabeth.jpg'			,'Ravitaillement'],
+        ['Muriel Mattersdorf'				, 'Mattersdorf-Muriel.jpg'		,'Ravitaillement'],
+        ['Pierre Mattersdorf'				, 'Mattersdorf-Pierre.jpg'		,'Organisation'],
+        ['Joël Etienne'						, 'Etienne-Joel.jpg'			,'Organisation']
+    ] %}
+
+    {% set apnee = [
+        [ 'Philippe PEAN'                     , 'PEAN-Philippe.jpg'           , 'MEF2'                          ],
+        [ 'Vincent PLANAT'                    , 'PLANAT-Vincent.jpg'          , 'MEF2'                          ],
+        [ 'Philippe PRIEUR'                   , ''                            , 'Instructeur National, MEF2'    ],
+        [ 'Thierry LAMBOLEY'                  , 'LAMBOLEY-Thierry.jpg'        , 'MEF1'                          ],
+        [ 'Jésus AMBROS'                      , ''                            , 'IE2'                           ],
+        [ 'Julien BARROUX'                    , ''                            , 'IE1'                           ]
+    ] %}
+
+    {%  set dds = [
+        ['Janine BARBIER'					, 'Barbier-Janine.jpg'			,'Présidente du Don du Sang local']
+    ] %}
+
+
+{% block main_page %}
+
+    {% import "macros/aff_member.html.twig" as affi %}
+
+	<div class="container">
+		<div class="col-xs-12">
+			<h3>Le who's who du GUC plongée</h3>
+			<a href="{{ asset('im/organisateurs.jpg') }}" target=_blank>
+				<img src="{{ asset('im/organisateurs.jpg') }}"  class="w100">
+			</a>
+		</div>
+
+		<div class="col-xs-12">
+			<h3>Composition du bureau (cliquez sur les noms pour voir les photos)</h3>
+            {{ affi.aff_members(bureau) }}
+		</div>
+
+		<div class="col-xs-12">
+			<h3>Responsables des sections et activités</h3>
+            {{ affi.aff_members(animation) }}
+		</div>
+
+		<div class="col-xs-12">
+			<h3>Les encadrants "scaphandre"</h3>
+            {{ affi.aff_members(dds) }}
+		</div>
+
+	</div>
+{% endblock %}
+
+{#
+// La boite modal qui permet d'afficher les vignettes des encadrants est placée en dehors
+// de la DIV 'content' parce que les transformations effectuées par le menu latéral font
+// dysfonctionner les positions static que la boite modal utilise.
+// En effet, les freres et fils de div contenant des transfos prennent un système de
+// coordonnées dans lequels les positions static se réfèrent a la page affichée
+// plutot qu'au top de l'écran : allez comprendre ??? Ca fait 10ans que tous les dev's
+// râlent mais ... on leur dit que c'est conforme a la spec ;-)
+#}
+
+{% block body_end %}
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="text-center">
+                    <h4 class="modal-title" id="exampleModalLabel">Qui est-ce ?</h4>
+                </span>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<div id="img_g">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var imagename  = button.data('imagename');
+            var PersonName = button.data('personnam');
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data
+            // binding library or other methods instead.
+            var modal = $(this);
+            modal.find('.modal-title').text(PersonName);
+            mytxt = '<img src="' + imagename + '" class="img-ident w100" />';
+            document.getElementById('img_g').innerHTML = mytxt;
+        });
+	</script>
+
+{% endblock %}

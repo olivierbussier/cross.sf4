@@ -1,0 +1,22 @@
+{% form_theme formEcrire 'bootstrap_3_layout.html.twig' %}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous écrire{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+	<div class="container">
+
+		<div class="col-xs-12">
+            {{ form_start(formEcrire) }}
+            {{ form_widget(formEcrire) }}
+			{{ form_end(formEcrire) }}
+		</div>
+
+	</div>
+
+{% endblock %}
+

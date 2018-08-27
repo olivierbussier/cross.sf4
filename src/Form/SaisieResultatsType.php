@@ -20,9 +20,18 @@ class SaisieResultatsType extends AbstractType
         }
 
         $builder
-            ->add('Fichier',FileType::class)
-            ->add('anneeCross',ChoiceType::class, [ 'choices' => $annees ])
-            ->add('Ajouter les résultats', SubmitType::class)
+            ->add('Fichier',FileType::class, [
+                'label' => 'Fichier à charger'
+            ])
+            ->add('anneeCross',ChoiceType::class, [
+                'choices' => $annees ,
+                'label' => 'Année à ajouter'
+            ])
+            ->add('AjouteRésultats', SubmitType::class, [
+                'label' => 'Ajouter les résultats',
+                'attr' => [
+                    'class' => 'btn-block btn-success'
+                ]])
             ->getForm();
     }
 

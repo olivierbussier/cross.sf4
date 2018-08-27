@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations d'accès{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+	<div class="container">
+
+		<div class="col-xs-12">
+			<h3>Renseignements généraux</h3>
+		</div>
+
+		<div class="col-xs-12 col-sm-6">
+			<h4>Où nous trouver la veille de la course ?</h4>
+			<p>Le jour précédant les inscriptions, vous pourrez nous trouver sur la place du village de Biviers, tel qu'indiqué sur le plan ci-dessous</p>
+			<p>Notre adresse :</p>
+			<address>
+				<strong>Place du village</strong><br>
+				152 Chemin de la Moidieu<br>
+				38330 Biviers<br>
+				<abbr title="Numéro de téléphone">Tel : </abbr>06 72 76 69 28<br>
+				<abbr title="Adresse mail">Mail : </abbr><a href="mailto:guy.chaboud@hotmail.fr"> Guy Chaboud</a>
+			</address>
+			<h4>Où nous trouver le jour de la course ?</h4>
+			<p>Le jour de la course, le rendez-vous est sur le stade Serge Kampf, juste à côté de la place du village</p>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 hidden-xs">
+			<img class="w100" src="{{ asset('im/a3.jpg') }}">
+		</div>
+
+		<div class="col-xs-12">
+			<h3>Les formalités pour le retrait du dossard</h3>
+			<h4>Deux cas de figure:</h4>
+			<h5><u>Votre dossier est complet :</u></h5>
+			<ul>
+				<li>Vous vous êtes inscrit par internet et votre certificat médical à été validé lors du processus d'inscription </li>
+				<li>Vous vous êtes inscrit par courrier et votre certificat médical valide y était joint</li>
+			</ul>
+			<p>Dans ce cas, il vous suffit de vous présenter 1/2h avant le départ de la course, et votre dossard ainsi que votre puce de chronométrage vous seront remis</p>
+			<h5><u>Votre dossier est incomplet :</u></h5>
+			<ul>
+				<li>Vous vous êtes inscrit par internet sans joindre de certificat médical valide</li>
+				<li>Vous vous êtes inscrit par courrier sans joindre de certificat médical valide</li>
+			</ul>
+			<p>Dans ce cas, votre dossard et votre puce de chronométrage vous seront remis sur présentation d'un certificat médical valide, tel que précisé dans le règlement <a href="fichiers/reglement_2017.pdf" target="_blank">consultable ici</a>. Présentez-vous 1/2h avant le départ de la course.</p>
+			<p>Si vous vous inscrivez la veille ou le jour de la course, votre dossard et votre puce de chronométrage vous seront remis à la fin du processus d'inscription</p>
+			<p>Si vous avez prévu de vous inscrire le jour de la course, anticipez ! parce qu'il y a du monde.</p>
+			<p><span class="redw">Et n'oubliez pas que les inscriptions sont closes 15mn avant le départ</span></p>
+		</div>
+
+		<div class="col-xs-12">
+			<h3>A l'arrivée</h3>
+			<p>Pensez bien à rendre la puce aux personnes présentes sur la ligne d'arrivée</p>
+		</div>
+
+		<div class="col-xs-12">
+			<h3>Plan d'accès</h3>
+			<iframe
+					width="100%" height="600px"
+					frameBorder="0"
+					src="http://umap.openstreetmap.fr/fr/map/carte-lieu-cross-de-biviers_141177#18?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&allowEdit=false&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=undefined&captionBar=false">
+			</iframe>
+			<p><a href="http://umap.openstreetmap.fr/fr/map/carte-lieu-cross-de-biviers_141177">Voir en plein écran</a></p>
+		</div>
+	</div>
+
+{% endblock %}
+
