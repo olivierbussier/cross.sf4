@@ -4,7 +4,7 @@ class ConvertDatabase
 {
     /**
      * @var array
-     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username, getImage
+     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username,getImage,nonnul
      */
     private $correspAdherents = [
         "id"                    => ["Ref"           , "integer"],
@@ -25,6 +25,22 @@ class ConvertDatabase
         "link"                  => ["Link"          , ""],
         "position_image"        => ["PositionImage" , ""],
         "image"                 => ["RefImage"      , "getImage"]
+    ];
+
+    private $correspResultats = [
+        "id"                    => ["Ref"           , "integer"],
+        "annee_cross"           => ["annee_cross"   , "integer"],
+        "course"                => ["course"        , "nonnul"],
+        "classement"            => ["arrive"        , "integer"],
+        "dossard"               => ["dossard"       , "integer"],
+        "temps"                 => ["temps"         , ""],
+        "ecart"                 => ["ecart"         , ""],
+        "vitesse"               => ["vitesse"       , ""],
+        "nom"                   => ["nom"           , ""],
+        "prenom"                => ["prenom"        , ""],
+        "categorie"             => ["categorie"     , ""],
+        "sexe"                  => ["sexe"          , ""],
+        "ville"                 => ["ville"         , ""]
     ];
 
     private $id = 0;
@@ -58,22 +74,45 @@ class ConvertDatabase
         }
     }
 
+    private function nonnul($field, $value)
+    {
+        if (is_string($value)) {
+            if ($value == '') {
+                return false;
+            } else {
+                $this->putSQL($field, "'" . $value . "'");
+            }
+        } elseif (is_integer($value)) {
+            if ($value == 0) {
+                return false;
+            } else {
+                $this->putSQL($field, $value);
+            }
+        } else {
+            $this->putSQL($field, "'" . $value . "'");
+        }
+        return true;
+    }
+
     private function nullable($field, $value)
     {
         if ($value == 0) {
             $value = 'null';
         }
         $this->putSQL($field, $value);
+        return true;
     }
 
     private function integer(string $field, string $val)
     {
         $this->putSQL($field, $val);
+        return true;
     }
 
     /**
      * @param string $field
      * @param string $val
+     * @return bool
      */
     private function boolean(string $field, string $val)
     {
@@ -92,11 +131,13 @@ class ConvertDatabase
                 exit;
         }
         $this->putSQL($field, $v);
+        return true;
     }
 
     /**
      * @param string $field
      * @param string $val
+     * @return bool
      */
     private function myDate(string $field, $val)
     {
@@ -106,20 +147,24 @@ class ConvertDatabase
         else
             $date = 'null';
         $this->putSQL($field, $date);
+        return true;
     }
 
     /**
      * @param string $field
      * @param string $val
+     * @return bool
      */
     private function create_password(string $field, string $val)
     {
         $this->putSQL($field, "'" . password_hash($val, PASSWORD_BCRYPT) . "'");
+        return true;
     }
 
     /**
      * @param string $field
      * @param string $val
+     * @return bool
      */
     private function getImage(string $field, string $val)
     {
@@ -132,8 +177,14 @@ class ConvertDatabase
             $txt = 'null';
         }
         $this->putSQL($field, $txt);
+        return true;
     }
 
+    /**
+     * @param string $field
+     * @param string $val
+     * @return bool
+     */
     private function set_roles(string $field, string $val)
     {
 
@@ -143,11 +194,13 @@ class ConvertDatabase
 
         $texte = serialize($dest_roles);
         $this->putSQL($field, "'" . $texte . "'");
+        return true;
     }
 
     /**
      * @param string $field
      * @param string $val
+     * @return bool
      */
     private function create_username(string $field, string $val)
     {
@@ -160,11 +213,11 @@ class ConvertDatabase
         $nom = str_replace('-', '_', $nom);
 
         $this->putSQL($field, "'" . $prenom . '_' . $nom . "'");
+        return true;
     }
 
     private function transfertDatabase(string $tableSrc, string $tableDst, array $tabCorresp)
     {
-        $this->sql = [];
 
         $res = $this->baseSrc->query("select * from $tableSrc");
 
@@ -172,6 +225,8 @@ class ConvertDatabase
 
             $this->id = $this->data['Ref'];
             echo $this->id . "\n";
+            $this->sql = [];
+            $row = true;
 
             foreach ($tabCorresp as $key => $val) {
                 $dest_field = $key;
@@ -183,10 +238,17 @@ class ConvertDatabase
                         $field = $this->data[$source_field];
                     else
                         $field = '';
-                    $this->$action($dest_field, $field);
+                    if (!$this->$action($dest_field, $field) == true) {
+                        $row = false;
+                        break;
+                    }
                 } else {
-                    $this->putSQL($dest_field, "'" . $this->baseDst->escape_string($this->data[$source_field]) . "'");
+                    $string = "'" . $this->baseDst->escape_string(trim($this->data[$source_field])) . "'";
+                    $this->putSQL($dest_field, $string );
                 }
+            }
+            if (!$row) {
+                continue;
             }
             $assigns = "";
             $sep = ' ';
@@ -197,6 +259,7 @@ class ConvertDatabase
             $sqlfinal = "insert into $tableDst set$assigns";
 
             $this->myQuery($this->baseDst, $sqlfinal);
+
 
             if (count($this->sqlLast) > 0) {
                 foreach ($this->sqlLast as $sq) {
@@ -212,6 +275,7 @@ class ConvertDatabase
     {
         $this->myQuery($this->baseDst,'delete from users');
         $this->myQuery($this->baseDst,'delete from blog');
+        $this->myQuery($this->baseDst,'delete from resultat');
     }
 
     public function doConvert()
@@ -220,6 +284,7 @@ class ConvertDatabase
 
         $this->transfertDatabase('prod_liste', 'users', $this->correspAdherents);
         $this->transfertDatabase('prod_blog_text', 'blog', $this->correspBlogTextes);
+        $this->transfertDatabase('prod_classement', 'resultat', $this->correspResultats);
     }
 }
 ?><!DOCTYPE html><html>

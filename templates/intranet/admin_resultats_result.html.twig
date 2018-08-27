@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fin de transfert{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <div class="container">
+
+        <div class="col-xs-12">
+            <h3>Les données ont été correctement transfrées</h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            {{ control.bouton(
+                " Retour a la page d'accueil intranet",
+                url('intranet'),
+                '',
+                'btn-block btn-default',
+                'reset') }}
+        </div>
+
+    </div>
+
+{% endblock %}

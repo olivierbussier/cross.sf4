@@ -22,6 +22,7 @@ security:
             form_login:
                 login_path: connexion
                 check_path: connexion
+                default_target_path: intranet
 
             logout:
                 path: deconnexion
