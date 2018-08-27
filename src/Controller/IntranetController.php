@@ -4,15 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Resultat;
 use App\Form\SaisieResultatsType;
-use Doctrine\ORM\Repository\RepositoryFactory;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Tests\File\UploadedFileTest;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IntranetController extends AbstractController

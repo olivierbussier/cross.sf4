@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BaseController extends AbstractController
@@ -79,25 +80,36 @@ class BaseController extends AbstractController
     /**
      * @Route("/resultats", name="resultats")
      */
-    public function resultats(RegistryInterface $doctrine)
+    public function resultats(RegistryInterface $doctrine, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $resultat = new Resultat();
 
         $resultRepo = $doctrine->getRepository(Resultat::class);
-        $courses    = $resultRepo->getAllCourses();
-        $annees     = $resultRepo->getAnneesCourses();
+
+        $courses = [];
+        foreach ($resultRepo->getAllCourses() as $k => $v) {
+            $courses[$v['course']] = $v['course'];
+        }
+
+        $annees = [];
+        foreach ($resultRepo->getAnneesCourses() as $k => $v) {
+            $annees[$v['anneeCross']] = $v['anneeCross'];
+        }
+
 
         $formChoix = $this->createFormBuilder()
             ->add('anneeCross',ChoiceType::class, [ 'choices' => $annees  ])
             ->add('course',ChoiceType::class, [ 'choices' => $courses ])
-            ->add('Ajouter les résultats', SubmitType::class)
+            ->add('Afficher les résultats', SubmitType::class)
             ->getForm();
         ;
 
+        $formChoix->handleRequest($request);
+
         if ($formChoix->isSubmitted() && $formChoix->isValid()) {
-            $choixAnnee = $formChoix['annee']->getData();
+            $choixAnnee = $formChoix['anneeCross']->getData();
 
             $resultat = $resultRepo->getCourse($choixAnnee);
             return $this->render('pages/resultats.html.twig', [
@@ -124,7 +136,7 @@ class BaseController extends AbstractController
      */
     public function contact()
     {
-        return $this->render('pages/resultats.html.twig');
+        return $this->render('pages/contact.html.twig');
     }
 
     /**

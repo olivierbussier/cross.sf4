@@ -37,7 +37,7 @@ class ResultatRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('r')
             ->where('r.anneeCross = :an')
             ->setParameter('an',$annee)
-            ->orderBy('r.rang', 'ASC')
+            ->orderBy('r.classement', 'ASC')
             ->getQuery()
             ->getScalarResult()
             //->getResult()
