@@ -7,6 +7,7 @@ use App\Entity\Resultat;
 use App\Form\ChoixCourseType;
 use App\Form\EcrireType;
 use Swift_Mailer;
+use Swift_Message;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -174,18 +175,18 @@ class BaseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contactFormData = $form->getData();
-            $message = (new \Swift_Message('You Got Mail!'))
+            $message = (new Swift_Message('You Got Mail!'))
                 ->setFrom($contactFormData['from'])
                 ->setTo('contact@cross-biviers.fr')
                 ->setBody(
                     $contactFormData['message'],
                     'text/plain'
                     )
-           ;
+            ;
 
-           $res = $mailer->send($message);
-
-           //return $this->redirectToRoute('ecrire');
+            $res = $mailer->send($message);
+            $this->addFlash('info', 'Message envoyé');
+            return $this->redirectToRoute('ecrire');
         }
 
         return $this->render('pages/ecrire.html.twig',[

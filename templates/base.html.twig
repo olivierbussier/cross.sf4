@@ -54,6 +54,8 @@
 
     <title>{% block title %}Welcome!{% endblock %}</title>
 
+    {% include 'flash/flash_messages.html.twig' %}
+
     </head>
     <body>
         {% block body %}
