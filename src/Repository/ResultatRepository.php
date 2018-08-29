@@ -32,11 +32,18 @@ class ResultatRepository extends ServiceEntityRepository
             ;
     }
 
-    public function getCourse(int $annee)
+    /**
+     * @param int $annee
+     * @param string $course
+     * @return array
+     */
+    public function getCourse(int $annee,string $course)
     {
         return $this->createQueryBuilder('r')
             ->where('r.anneeCross = :an')
+            ->andWhere('r.course = :course')
             ->setParameter('an',$annee)
+            ->setParameter('course',$course)
             ->orderBy('r.classement', 'ASC')
             ->getQuery()
             ->getScalarResult()

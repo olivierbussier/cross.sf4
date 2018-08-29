@@ -19,6 +19,8 @@ class BaseController extends AbstractController
 {
     /**
      * @Route("/", name="root")
+     * @param RegistryInterface $doctrine
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(RegistryInterface $doctrine)
     {
@@ -82,6 +84,9 @@ class BaseController extends AbstractController
 
     /**
      * @Route("/resultats", name="resultats")
+     * @param RegistryInterface $doctrine
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function resultats(RegistryInterface $doctrine, Request $request)
     {
@@ -116,27 +121,22 @@ class BaseController extends AbstractController
 
         $formChoix->handleRequest($request);
 
-        if ($formChoix->isSubmitted() && $formChoix->isValid()) {
-            $choixAnnee = $formChoix['anneeCross']->getData();
+        $resultat  = 0;
 
-            $resultat = $resultRepo->getCourse($choixAnnee);
-            return $this->render('pages/resultats.html.twig', [
-                'formChoix' => $formChoix->createView(),
-                'courses' => $courses,
-                'annees' => $annees,
-                'choixAnnee' => $choixAnnee,
-                'resultats' => $resultat
-            ]);
-        } else {
-            return $this->render('pages/resultats.html.twig', [
-                'formChoix' => $formChoix->createView(),
-                'courses' => $courses,
-                'annees' => $annees,
-                'choixAnnee' => 0,
-                'resultats' => 0
-            ]);
+        if ($formChoix->isSubmitted() && $formChoix->isValid()) {
+            $choixAnnee  = $formChoix['anneeCross']->getData();
+            $choixCourse = $formChoix['course']->getData();
+
+            $resultat = $resultRepo->getCourse($choixAnnee,$choixCourse);
 
         }
+
+        return $this->render('pages/resultats.html.twig', [
+            'formChoix' => $formChoix->createView(),
+            'courses' => $courses,
+            'annees' => $annees,
+            'resultats' => $resultat
+        ]);
     }
 
     /**

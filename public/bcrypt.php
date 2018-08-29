@@ -4,7 +4,7 @@ class ConvertDatabase
 {
     /**
      * @var array
-     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username,getImage,nonnul
+     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username,getImage,nonnul,convertTemps
      */
     private $correspAdherents = [
         "id"                    => ["Ref"           , "integer"],
@@ -33,9 +33,9 @@ class ConvertDatabase
         "course"                => ["course"        , "nonnul"],
         "classement"            => ["arrive"        , "integer"],
         "dossard"               => ["dossard"       , "integer"],
-        "temps"                 => ["temps"         , ""],
-        "ecart"                 => ["ecart"         , ""],
-        "vitesse"               => ["vitesse"       , ""],
+        "temps"                 => ["temps"         , "convertTemps"],
+        "ecart"                 => ["ecart"         , "convertTemps"],
+        //"vitesse"               => ["vitesse"       , ""],  // Calculé par convertTemps
         "nom"                   => ["nom"           , ""],
         "prenom"                => ["prenom"        , ""],
         "categorie"             => ["categorie"     , ""],
@@ -51,6 +51,9 @@ class ConvertDatabase
     private $baseSrc;
     private $baseDst;
 
+    /**
+     * ConvertDatabase constructor.
+     */
     public function __construct()
     {
         $this->baseSrc = new mysqli('localhost', 'root', '', 'cross_old');
@@ -66,6 +69,10 @@ class ConvertDatabase
         $this->sql[$field] = $value;
     }
 
+    /**
+     * @param mysqli $m
+     * @param $query
+     */
     private function myQuery(mysqli $m, $query)
     {
         echo $query . "\n\n";
@@ -74,6 +81,11 @@ class ConvertDatabase
         }
     }
 
+    /**
+     * @param $field
+     * @param $value
+     * @return bool
+     */
     private function nonnul($field, $value)
     {
         if (is_string($value)) {
@@ -94,6 +106,11 @@ class ConvertDatabase
         return true;
     }
 
+    /**
+     * @param $field
+     * @param $value
+     * @return bool
+     */
     private function nullable($field, $value)
     {
         if ($value == 0) {
@@ -103,6 +120,11 @@ class ConvertDatabase
         return true;
     }
 
+    /**
+     * @param string $field
+     * @param string $val
+     * @return bool
+     */
     private function integer(string $field, string $val)
     {
         $this->putSQL($field, $val);
@@ -131,6 +153,46 @@ class ConvertDatabase
                 exit;
         }
         $this->putSQL($field, $v);
+        return true;
+    }
+
+
+    /**
+     * @param $field
+     * @param $val
+     * @return bool
+     */
+    private function convertTemps($field, $val)
+    {
+        $val = trim($val);
+
+        if ($val == "" || $val == '0' || $val == '0/0/0')
+            $val="00:00:00";
+
+        if (!($res = DateTime::createFromFormat('G i s', $val)) &&
+            !($res = DateTime::createFromFormat('H i s', $val)) &&
+            !($res = DateTime::createFromFormat('H\/i\/s', $val)) &&
+            !($res = DateTime::createFromFormat('G\/i\/s', $val)) &&
+            !($res = DateTime::createFromFormat('G:i:s', $val)) &&
+            !($res = DateTime::createFromFormat('H:i:s', $val)) &&
+            !($res = DateTime::createFromFormat('H\ \h\ i\ \m\n\ s\ \s', $val)) &&
+            !($res = DateTime::createFromFormat('G\ \h\ i\ \m\n\ s\ \s', $val))) {
+            var_dump(DateTime::getLastErrors());
+            echo "Pas de format pour : $val\n";
+            return true;
+        } else {
+            $fmt = $res->format("H:i:s");
+            //echo "$field : $val -> $fmt\n";
+            $this->putSQL($field, "'" . $fmt . "'");
+
+            if ($field == 'temps') {
+                $t = explode(":",$fmt);
+                $dt = ($t[0] + $t[1]/60 + $t[2]/3600);
+                $vitesse = 10.0 / $dt;
+                //echo "vitesse = $vitesse\n";
+                $this->putSQL("vitesse", sprintf("'%02.2f Km/h'",$vitesse));
+            }
+        }
         return true;
     }
 
@@ -216,6 +278,11 @@ class ConvertDatabase
         return true;
     }
 
+    /**
+     * @param string $tableSrc
+     * @param string $tableDst
+     * @param array $tabCorresp
+     */
     private function transfertDatabase(string $tableSrc, string $tableDst, array $tabCorresp)
     {
 
@@ -224,7 +291,7 @@ class ConvertDatabase
         while ($this->data = $res->fetch_assoc()) {
 
             $this->id = $this->data['Ref'];
-            echo $this->id . "\n";
+            //echo $this->id . "\n";
             $this->sql = [];
             $row = true;
 
@@ -271,6 +338,9 @@ class ConvertDatabase
         }
     }
 
+    /**
+     *
+     */
     private function emptyBase()
     {
         $this->myQuery($this->baseDst,'delete from users');
@@ -278,6 +348,9 @@ class ConvertDatabase
         $this->myQuery($this->baseDst,'delete from resultat');
     }
 
+    /**
+     *
+     */
     public function doConvert()
     {
         $this->emptyBase();
@@ -289,9 +362,10 @@ class ConvertDatabase
 }
 ?><!DOCTYPE html><html>
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta http-equiv="content-language" content="fr">
         <meta name="language" content="fr">
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
     </head>
     <body>
         <pre>
