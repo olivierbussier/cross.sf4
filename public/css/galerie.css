@@ -1,0 +1,145 @@
+/* line 3, ../sass/galerie.scss */
+a {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 8, ../sass/galerie.scss */
+
+.center {
+  text-align: center;
+}
+
+.gpara {
+  clear: both;
+  display: block;
+  float: none;
+  width: 100%;
+  text-align: justify;
+}
+
+/* line 16, ../sass/galerie.scss */
+.galrow {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0 2px;
+}
+/* line 21, ../sass/galerie.scss */
+.galrow:after {
+  clear: both;
+}
+
+/* line 27, ../sass/galerie.scss */
+.text-cond:nth-of-type(even) {
+  text-align: left;
+}
+/* line 30, ../sass/galerie.scss */
+.text-cond:nth-of-type(odd) {
+  text-align: right;
+}
+
+/* line 34, ../sass/galerie.scss */
+.bloc-left {
+  float: left;
+}
+
+/* line 37, ../sass/galerie.scss */
+.bloc-right {
+  float: right;
+}
+
+/* line 44, ../sass/galerie.scss */
+.globimag {
+  display: block;
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 60, ../sass/galerie.scss */
+.imagrow {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 1px 0;
+}
+
+/* line 67, ../sass/galerie.scss */
+.imag {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 76, ../sass/galerie.scss */
+.imaglink {
+  margin: auto;
+  display: block;
+  float: left;
+}
+
+/* line 85, ../sass/galerie.scss */
+.largimag {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 96, ../sass/galerie.scss */
+.largvid {
+  display: block;
+  max-width: 95vw;
+  max-height: 90vh;
+  width: 1920px;
+  height: 1080px;
+  padding: 0;
+  margin: 0 auto;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* line 107, ../sass/galerie.scss */
+.galerie {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+/* line 113, ../sass/galerie.scss */
+.margz {
+  margin: 0;
+  padding: 1px;
+}
+
+/* line 118, ../sass/galerie.scss */
+.unegalerie {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+/* line 124, ../sass/galerie.scss */
+.imgleft {
+  float: left;
+}
+
+/* line 125, ../sass/galerie.scss */
+.imgright {
+  float: right;
+}
+
+/*# sourceMappingURL=galerie.css.map */

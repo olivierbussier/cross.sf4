@@ -106,7 +106,6 @@ class BaseController extends AbstractController
             $annees[$v['anneeCross']] = $v['anneeCross'];
         }
 
-
         $formChoix = $this->createFormBuilder()
             ->add('anneeCross',ChoiceType::class, [ 'choices' => $annees  ])
             ->add('course',ChoiceType::class, [ 'choices' => $courses ])

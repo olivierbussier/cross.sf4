@@ -5,6 +5,21 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
+    # paramètres spécifiques a l'application
+    conf:
+        # Galerie
+        galerie.path_images: 'galerie'
+        galerie.path_thumb:  'galerie/thumb'
+        galerie.path_sized:  'galerie/sized'
+        galerie.path_img:    'galerie/img'
+        galerie.nb_par_page:   60
+        galerie.thumbHeight:  320
+        galerie.thumbWidth:   320
+        galerie.thumbQuality:  80
+        galerie.sizedHeight: 1080
+        galerie.sizedWidth:  1920
+        galerie.sizedQuality:  80
+
 
 services:
     # default configuration for services in *this* file

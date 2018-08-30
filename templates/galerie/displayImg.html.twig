@@ -1,0 +1,121 @@
+{% extends 'frame.html.twig' %}
+
+{% block title %}Affichage Image{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/galerie.css") }}">
+{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <script>
+        resizeImg = function() {
+            var screenWidth  = document.body.clientWidth,
+                screenHeight = document.body.clientHeight,
+                pHeight      = 0, //$('#affsize').height(),
+                formHeight   = $('#formpage').height(),
+                xx           = $('#myimage'),
+                imgWidth  = xx[0].naturalWidth,
+                imgHeight = xx[0].naturalHeight,
+                imgRatio  = imgWidth / imgHeight,
+
+                // Calcul de la taille de l'image idéale
+
+                maxHeight = screenHeight - formHeight - pHeight - 20,
+                maxWidth  = screenWidth - 30;
+
+            if (maxWidth / imgRatio <= maxHeight) {
+                newWidth  = maxWidth ;
+                newHeight = maxWidth / imgRatio;
+            } else {
+                newHeight = maxHeight;
+                newWidth  = maxHeight * imgRatio;
+            }
+            xx[0].width  = newWidth;
+            xx[0].height = newHeight;
+
+            /*$('#affsize').text('sw='+screenWidth+
+                             ', sh='+screenHeight+
+                             ', ra='+imgRatio+
+                             ', mw='+maxWidth+
+                             ', mh='+maxHeight
+                              );*/
+        };
+        $( window ).resize(resizeImg);
+
+        window.addEventListener("load", function(event) {
+            resizeImg();
+        });
+    </script>
+
+    <div class="container">
+        <div class="col-xs-12">
+            <form method="post" action="javascript:window.close()" id="formpage">
+                <div class="center">
+                    {% if prevFile %}
+                        {{ control.bouton(
+                            '',
+                            url('display_img') ~ '/' ~ repertoire ~ '/' ~ prevFile,
+                            '',
+                            'btn-default',
+                            'arrow-left') }}
+                    {% else %}
+                        {{ control.bouton(
+                            '',
+                            '',
+                            '',
+                            'btn-default disabled',
+                            'arrow-left') }}
+                    {% endif %}
+
+                    <button type="submit"><span class="glyphicon glyphicon-home"></span></button>
+
+                    {#{{ control.bouton('', 'Submit', 'Envoyer', 'default', 'glyph:home') }}#}
+
+                    {% if nextFile %}
+                        {{ control.bouton(
+                            '',
+                            url('display_img') ~ '/' ~ repertoire ~ '/' ~ nextFile,
+                            '',
+                            'btn-default',
+                            'arrow-right') }}
+                    {% else %}
+                        {{ control.bouton(
+                            '',
+                            '',
+                            '',
+                            'btn-default disabled',
+                            'arrow-right') }}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12">
+
+            {% if type == 'youtube' %}
+
+                {# Affichage d'une vidéo Youtube  #}
+                {# ------------------------------ #}
+
+                <iframe class="largvid" src="https://www.youtube.com/embed/{{ filename }}?rel=0" frameborder="0" allowfullscreen>
+                </iframe>\n";
+
+            {% elseif type == 'video' %}
+
+                <video class="largvid" id="our-video" controls autoplay width="100%">
+                    <source src="{{ asset(baseImages) ~ '/' ~ repertoire ~ '/' ~ filename }}" type="video/mp4">
+                </video>
+
+            {% elseif type == 'image' %}
+
+                <img class="largimag" id="myimage" src="{{ asset(baseImages) ~  '/' ~ repertoire ~ '/' ~ filename }}" />
+
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

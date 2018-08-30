@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50183564-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'UA-50183564-2');
+        </script>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta charset="UTF-8">
+        <meta http-equiv="content-language" content="fr">
+        <meta name="language" content="fr">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Le cross ou trail de Biviers (Jacques Chabert) dans le Gresivaudan, pres de
+         Grenoble, est une course à pied nature de 10Km organisee chaque annee le troisieme week end de Septembre"/>
+        <meta name="keywords" content="cross, course a pied, 10km, 10 Kilometres, CAP, trail, Biviers, Gresivaudan, Grenoble, Jogging, running, Jacques Chabert, isère, ffa, club, Rhone alpes"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset("cross.ico") }}"/>
+        <script type="text/javascript" id="cookiebanner"
+                src="{{ asset("js/cookiebanner.min.js") }}"
+                data-position="top"
+                data-fg="#ffffff"
+                data-bg="#3b5269"
+                data-link="#dddddd"
+                data-moreinfo="http://www.cnil.fr/vos-obligations/sites-web-cookies-et-autres-traceurs/que-dit-la-loi/"
+                data-message="Les cookies assurent le bon fonctionnement de notre site Internet.
+                                  En utilisant ce dernier, vous acceptez leur utilisation."
+                data-linkmsg="En savoir plus"
+                data-effect="fade"
+                data-expires="{{ "now"|date_modify('+30days')|date('r') }}"
+                data-zindex="1000"
+                data-height="64px"
+                data-font-size="22px">
+        </script>
+
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset("css/cross_frame.css") }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset("css/fonts/raleway.css") }}">
+        {% endblock %}
+
+        {% block javascripts_head %}
+        <script type="text/javascript" src="{{ asset("js/jquery-3.1.1.min.js") }}"></script>
+        {% endblock %}
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+    </head>
+    <body>
+        {% block body %}
+
+            {% block main_page %}{% endblock %}
+
+        {% endblock %}
+        {% block body_end %}{% endblock %}
+    </body>
+    {% block javascripts_end %}{% endblock %}
+    {% block footer_end %}{% endblock %}
+</html>

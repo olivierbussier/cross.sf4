@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% macro align(icol, val) %}
+    {% if icol % 2 == val %}
+        {{ 'bloc-left' }}
+    {% else %}
+        {{ 'bloc-right' }}
+    {% endif %}
+{% endmacro %}
+
+{% import _self as utils %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/galerie.css") }}">
+{% endblock %}
+
+{% block javascripts_head %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/resize.js") }}"></script>
+{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <div class="container">
+        <div class="col-xs-12">
+            <h3>Les photos !!!</h3>
+            <p>Voici quelques photos sous-marines rapportées lors de sorties, week-ends, vacances.
+               De quoi émerveiller ceux d'entre nous qui n'ont pas (encore !) eu la chance de vivre ça,
+               de quoi rappeler de bons souvenirs à ceux qui connaissent,
+               de quoi donner envie à tous d'y aller dès que possible...</p>
+        </div>
+
+        <div class="directory">
+
+            {% set icol = 0 %}
+
+            {% for dir in dirs %}
+            {#
+                {{ dump(dir) }}
+                {{ dump(baseImagesThumb) }}
+                {{ dump(baseImagesSized) }}#}
+                {% if icol % 2 == 0 %}
+                    <div class="galrow">
+                {% endif %}
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-cond">
+
+                    <div class="unegalerie">
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% if not dir.protected %}
+                                    <a class="gallerylink" href="{{ url('galerie') }}/{{ dir.path }}">
+                                        <h4>{{ dir.title }}</h4>
+                                    </a>
+                                {% else %}
+                                    <h4>{{ dir.title }}</h4>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 {{ utils.align(icol,1) }}">
+                                {% if not dir.protected %}
+                                    <a class="gallerylink" href="{{ url('galerie') }}/{{ dir.path }}">
+
+                                        {% set thumbname = dir.path ~ '/' ~ dir.rndfile ~ "?a=" ~ dir.random %}
+
+                                        <img class="globimag" src="{{ asset(baseImagesThumb ~ '/' ~ dir.path ~ '/' ~ dir.rndfile ~ '?a=' ~ dir.random) }}" />
+                                    </a>
+                                {% else %}
+                                    <img class="globimag" src="{{ asset('im/login.png') }}" />
+                                {% endif %}
+                            </div>
+
+                            <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 {{ utils.align(icol, 0) }}">
+                                <p class="gpara">{{ dir.text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if icol % 2 == 1 %}
+                    </div>
+                {% endif %}
+
+                {% set icol = icol + 1 %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

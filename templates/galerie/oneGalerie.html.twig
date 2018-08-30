@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/galerie.css") }}">
+{% endblock %}
+
+{% block javascripts_head %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/resize.js") }}"></script>
+{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+        <div class="col-xs-12">
+            {{ control.bouton(
+                'Retour à la liste des galeries',
+                url('galerie'),
+                '',
+                'btn-block btn-default',
+                'home'
+            ) }}
+        </div>
+
+            {% if nbPages > 1 %}
+                <nav aria-label="Page navigation">
+                    <ul class="pagination margz">
+                        <li>
+                            <a href="{{ url('galerie') }}/{{ repertoire }}/{{ page == 1 ? 1 : page - 1}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span></a>
+                        </li>
+
+                        {% for i in 1..nbPages %}
+                            {% if i == page %}
+                                <li class="active">
+                            {% else %}
+                                <li>
+                            {% endif %}
+                            <a href="{{ url('galerie') }}/{{ repertoire }}/{{ i }}">{{ i }}</a></li>
+                        {% endfor %}
+
+                        <li>
+                            <a href="{{ url('galerie') }}/{{ repertoire }}/{{ page == nbPages ? page : page + 1 }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
+
+            {% for file in files %}
+
+                <a class="imaglink" href="{{ url('display_img') }}/{{ repertoire }}/{{ file.name }}" target="galimage">
+                    <img class="imag" src="{{ asset(file.thumb) }}">
+                </a>
+
+            {% endfor %}
+
+{% endblock %}
