@@ -1,0 +1,19 @@
+
+/* Tables */
+
+.calendrier {
+	th,td {
+		padding: 0 1px!important;
+	}
+	th {
+		text-align: center!important;
+	}
+	td {
+		&.reserve     { background-color: rgba(255, 197,   0, 0.34);}
+		&.encours     { background-color: rgba(255,   0,   0, 0.56);}
+		&.restitue    { background-color: rgba( 12, 155,  15, 0.34);}
+		&.maintenance { background-color: rgba(170, 170, 170, 0.75);}
+		&.wlegend     { width:200px; }
+	}
+
+}

@@ -1,0 +1,259 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "hamburgers/hamburgers";
+
+
+@import "cross_variables";
+@import "styles";
+@import "blog";
+@import "calendrier";
+
+// Specifics bootstrap overrides
+
+.btn-default {
+	text-align: left!important;
+}
+
+.container {
+	//display: block;
+	//float:left;
+	width:100%;
+	margin: 0;
+	//margin-top:10px;
+	padding: 0;
+	background-color:$color-boxe;
+	//@include border-radius($rad);
+	//@include box-shadow(10px 10px 5px 0 rgba(0,0,0,0.15));
+}
+
+.zonsearch {
+	margin:0;
+	padding-top:5px;
+	padding-bottom: 5px;
+	.pagination {
+		margin:0;
+		padding-top:5px;
+		padding-bottom: 5px;
+	}
+}
+
+/***********************************************************************/
+/* Styles tarifs
+/***********************************************************************/
+
+table.tarif {
+	td:nth-child(odd) {
+		text-align: right;
+	}
+	td:nth-child(even) {
+    	text-align: left;
+    	width: 4em;
+	}
+}
+
+img.tarif {
+		width: 50px;
+	}
+
+ 
+// Listes 
+// ***************************************************
+
+ul {
+	margin-bottom:5px;
+	padding: 5px;
+	margin: 5px 10px 5px 20px;
+}
+
+//li {
+//	display: list-item;
+	//list-style-type:circle;
+	//margin-left:20px;
+//	padding-right:10px;
+//}
+
+// Headers, 1,2,3 traités à l'identique
+// ***************************************************
+
+h1, h2, h3 {
+	font-size:20px;
+	background-color:$color-head;
+	@include border-radius($rad $rad 0 0);
+	color:white;
+	padding: 5px 5px;
+	margin:10px 0 10px 0;
+	text-align: center;
+}
+
+h4 {
+	font-size:20px;
+	color:$color-text;
+	//padding: 15px 0 5px 0;
+	//margin:0;
+}
+
+// Liens et paragraphes
+// ****************************************************
+
+textarea { width: 100%;	padding: 0 10px; }
+
+/* Images */
+
+.cimg {
+	display:block;
+	@include border-radius($rad);
+	width:100%;
+	margin: 0 auto;
+	padding: 5px 5px 0 5px;
+}
+
+.w60 {
+	width:60%;
+	display:block;
+	margin: 0 auto;
+}
+
+.w100 {
+	width:100%;
+	display:block;
+	margin: 0 auto;
+}
+
+// Classes d'affichage
+// ************************************************
+
+.fixed-w  { width: 250px!important; }  // Largeur pour les groupes de boutons
+.remain-w { width: 100%!important;}
+
+.round {
+	@include border-radius($rad);
+	background-color: #fff;
+}
+
+.case-tabform { float: left; padding:5px; }
+.td-center {text-align: center!important; }
+
+.nomblu {
+	padding: 0 1px;
+	margin: 0 auto;
+	background-color:$color-head;
+	color:white;
+	text-align:center;
+	clear: both;
+	@include border-radius(0 0 $rad $rad);
+	line-height: 100%;
+	max-width: $img-max;
+}
+
+.accentue {
+	color:#0C9B29;
+	font-weight: bold;
+}
+
+/* Tables */
+
+.bord {
+	border: $color-head 1px solid;
+	width: 100%;
+}
+
+// Couleurs GUC
+// **************************************************
+
+.yellow { text-align:center; background-color: rgba(255, 197,   0, 0.34);}
+.red    { text-align:center; background-color: rgba(255,   0,   0, 0.56);}
+.green  { text-align:center; background-color: rgba( 12, 155,  15, 0.34);}
+.black  { text-align:center; background-color: rgba(  0,   0,   0, 0.75);}
+.white  { text-align:center; background-color: rgba(255, 255, 255, 0.75);}
+.grey   { text-align:center; background-color: rgba(170, 170, 170, 0.75);}
+.greyc  { text-align:center; background-color: rgba(221, 221, 221, 0.75);}
+
+// Rouge avec caracteres blanc
+.redw   {
+	text-align:center;
+	background-color: rgba(255,   0,   0, 0.56);
+	color: white;
+}
+
+.searchtxt { width:270px;}
+.searchpge {
+	padding:10px;
+	a   { padding: 0;margin: 0; }
+}
+.searchbtn {
+	width: 150px;
+	a   {
+		padding: 0;
+		margin: 0;
+	}
+	img {
+		margin: 0;
+		padding: 0;
+		width:20%;
+		display: inline; 
+	}
+}
+
+// Classe pour l'affichage de lignes dans la gestion
+// des emprunts matériels
+
+.elemmatos {
+	background-color: #ddd;
+	border: 1px black solid;
+	margin: 2px;
+	padding:0;
+}
+
+.tabnotfull { width:auto !important;}
+.tableft    { width:auto !important; margin: auto auto auto 0!important;}
+.tabright   { width:auto !important; margin: auto 0 auto auto!important;}
+.legendcol  { width:30px;}
+.legendtxt  {}
+
+// Trombinoscope et classes d'image
+
+.case-trombi {
+	float: left;
+	background:$color-boxe;
+	@include border-radius($rad);
+	@include box-shadow(5px 5px 3px 1px rgba(black, 0.15));
+	margin:5px;
+}
+
+.img-trombi  {
+	float: left;
+	height:auto;
+	max-width: 155px;
+	@include border-radius($rad $rad 0 0);
+	padding: 0;
+}
+
+.img-table {
+	width:90px;
+	@include border-radius($rad);
+	padding: 0;
+}
+
+.full-width {
+	padding-left:0;
+	padding-right:0;
+}
+
+.img-ident {
+	margin: 10px auto 0 auto;
+	padding: 0;
+	height:auto;
+	max-width: $img-max;
+	@include border-radius($rad $rad 0 0);
+}
+
+.img-w {
+	width: 400px;
+	height: auto;
+}
+
+.img-h {
+	height: 400px;
+	width: auto;
+}
+

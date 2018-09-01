@@ -1,60 +1,61 @@
-/* line 8, ../sass/cross.scss */
-html, body {
+/* line 8, ../../sass/cross.scss */
+html,
+body {
   height: 100%;
 }
 
-/* line 12, ../sass/cross.scss */
+/* line 12, ../../sass/cross.scss */
 body {
-  margin: 0px auto !important;
-  background: #eaeff3 url(images/bg.jpg) repeat-x left top !important;
   max-width: 1200px;
+  margin: 0 auto !important;
+  background: #eaeff3 url(images/bg.jpg) repeat-x left top !important;
 }
 
-/* line 23, ../sass/cross.scss */
+/* line 23, ../../sass/cross.scss */
 header {
   padding: 0;
 }
 
-/* line 27, ../sass/cross.scss */
+/* line 27, ../../sass/cross.scss */
 .round {
   border-radius: 4px;
 }
 
 /* Page */
-/* line 32, ../sass/cross.scss */
+/* line 32, ../../sass/cross.scss */
 .page {
   margin: 0 auto;
   padding: 0;
-  background: #FFF;
+  background: #fff;
 }
 
 /* Zone du bandeau GUC */
-/* line 40, ../sass/cross.scss */
+/* line 40, ../../sass/cross.scss */
 #bandeau {
+  width: 100%;
   margin: 0;
-  width: 100%;
 }
-/* line 43, ../sass/cross.scss */
+/* line 43, ../../sass/cross.scss */
 #bandeau img {
-  width: 100%;
   display: block;
+  width: 100%;
   padding: 0;
   border-radius: 0;
 }
 
-/* line 53, ../sass/cross.scss */
+/* line 53, ../../sass/cross.scss */
 .b-droite {
   display: block;
   float: right;
   width: 15%;
   margin: 5px 0 0 0;
 }
-/* line 58, ../sass/cross.scss */
+/* line 58, ../../sass/cross.scss */
 .b-droite img {
   padding: 0 0 5px 0;
 }
 
-/* line 61, ../sass/cross.scss */
+/* line 61, ../../sass/cross.scss */
 .b-gauche {
   display: block;
   float: left;
@@ -62,50 +63,49 @@ header {
 }
 
 /* Zone de pied de page */
-/* line 68, ../sass/cross.scss */
+/* line 68, ../../sass/cross.scss */
 #footer {
   margin: 0 auto 20px auto;
   padding: 20px;
   text-align: center;
   background-color: #345678;
 }
-/* line 73, ../sass/cross.scss */
+/* line 73, ../../sass/cross.scss */
 #footer p {
   color: white;
 }
 
 @media only screen and (max-width: 800px) {
-  /* line 79, ../sass/cross.scss */
+    /* line 79, ../../sass/cross.scss */
   .b-droite {
     display: none;
     width: 0;
     margin: 0;
   }
-  /* line 84, ../sass/cross.scss */
+    /* line 84, ../../sass/cross.scss */
   .b-droite img {
     padding: 0 0 5px 0;
   }
 
-  /* line 87, ../sass/cross.scss */
+    /* line 87, ../../sass/cross.scss */
   .b-gauche {
     display: block;
     float: left;
     width: 100%;
   }
 }
+
 @media only screen and (max-width: 1200px) {
-  /* line 96, ../sass/cross.scss */
+    /* line 96, ../../sass/cross.scss */
   #siteWrapper {
     min-height: 920px;
   }
 
-  /* line 104, ../sass/cross.scss */
+    /* line 104, ../../sass/cross.scss */
   #content {
-    margin: 0px;
-    padding: 0px;
-    background: #F0F0F0;
+    margin: 0;
+    padding: 0;
     text-align: justify;
+    background: #f0f0f0;
   }
 }
-
-/*# sourceMappingURL=cross.css.map */

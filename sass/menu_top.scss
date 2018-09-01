@@ -1,0 +1,247 @@
+@import "compass/css3/box-shadow";
+@import "compass/css3/images";
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/reset/utilities";
+
+@import "cross_variables";
+
+$effect-duration: 0.5s;
+
+.flashbegin {
+	@include transition-property(color);
+	@include transition-duration($effect-duration);
+	@include transition-timing-function(ease-in-out);
+}
+.flashend {
+	color: white;
+	@include transition-property(color);
+	@include transition-duration($effect-duration);
+	@include transition-timing-function(ease-in-out);
+}
+
+// Site wrapper qui permet de garder le menu en haut 
+// de l'�cran quand on scrolle vers le bas
+
+#menu {
+	&.fixed {
+		position:fixed;
+		top:0;
+		z-index: 1000;
+	}
+	width: $max-wid;
+	margin: 0;
+	padding: 10px 0 0 0; 
+	list-style: none;
+
+	@include background(linear-gradient(#394c87, #394c87));
+	//@include border-radius($rad);
+	//@include box-shadow(#9c9c9c 0 2px 1px);
+
+	font-size:14px;
+
+	.menubapteme {
+		color:#fc9c5c !important;
+	}
+	&:after{
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	}
+
+	li{
+		float: left;
+		padding: 0 0 10px 0;
+		margin: 0;
+		position: relative;
+		list-style: none;
+		&:hover > a {
+			color: #fafafa;
+		}
+		&:hover > ul{
+			display: block;
+		}
+	}
+	a{
+		float: left;
+		height: 25px;
+		padding: 0 10px;
+		color: #ffffff;
+		text-transform: uppercase;
+		//font-family: Trebuchet MS, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+		font-size: 18px;
+		text-decoration: none;
+		text-shadow: 0 1px 0 #000;
+	}
+
+	// Sous-menu
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: none;
+		position: absolute;
+		top: 35px;
+		left: 0;
+		z-index: 10000;
+		background: #394c87;
+
+		@include background(linear-gradient(#444, #111));
+		@include border-radius($rad);
+
+		li{
+			float: none;
+			margin: 0;
+			padding: 0;
+			display: block;
+
+			@include box-shadow(0 1px 0 #111111,0 2px 0 #777777);
+
+			&:last-child {
+				@include box-shadow(none);
+				a{
+					@include border-radius(0 0 $rad $rad);
+				}
+			}
+			&:first-child {
+				a {
+					@include border-radius($rad $rad 0 0);
+				}
+				a:after {
+					content: '';
+					position: absolute;
+					left: 30px;
+					top: -8px;
+					width: 0;
+					height: 0;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+					border-bottom: 8px solid #444;
+				}
+				a:hover:after {
+					border-bottom-color: #04acec;
+				}
+			}
+		}
+		a {
+			padding: 10px;
+			height: auto;
+			line-height: 1;
+			display: block;
+			white-space: nowrap;
+			float: none;
+			text-transform: none;
+			background-color: #394c87;
+			&:hover{
+					background: #0186ba;
+					@include background(linear-gradient(to bottom, #04acec, #0186ba));
+			}
+		}
+	}
+}
+
+#menu-icon {
+	display: none;
+	width: 60px;
+	height: 60px;
+	//background: #394c87 url(images/menu-icon.png) center;
+}
+
+/*MEDIA QUERY*/
+@media only screen and (max-width : $max-wid) {
+
+	.iconic {
+		display: block;
+		position: fixed;
+		top: 30px;
+		right: 8px;
+		width: 60px;
+		height: 60px;
+		z-index: 1000;
+		img {
+			width: 40px;
+			height: 40px;
+		}
+	}
+	.site-container {
+		overflow: hidden;
+	}
+	.site-pusher {
+		@include transition-duration(0.3s);
+		@include transform(translateX(0px));
+	}
+	header {
+		position: absolute;
+	}
+
+	#menu-icon {
+		display:block;
+		position: fixed;
+		outline:none;
+		//top: 10px;right: 10px;
+	}
+
+	.with--sidebar {
+		.site-pusher {
+			@include transform(translateX(250px));
+		}
+		#site-cache {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0,0,0,0.1);
+		}
+	}
+
+	#menu {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		background-color: darken(#277929,5);
+		width: 250px;
+
+		@include transform(translateX(250px * -1));
+
+		//height: 1500px;
+		overflow-y: auto;
+		z-index: 1000;
+
+		a,img,a::after {
+			display: block;
+			float:none;         
+			position:static;
+			height: 40px;
+			text-align: left;
+			padding-left:20px;
+			line-height: 40px;
+			border-bottom: 1px solid #fff;
+			@include border-radius(initial !important);
+		}
+		ul,li {
+			display:block;
+			float:none;
+			position:static;
+			@include border-radius(initial);
+		}
+		li {
+			padding: 0;
+		}
+		li:last-child {
+			@include border-radius(initial);
+		}
+		& > li > a {
+			color:orange;
+			background-color: #394c87;
+			align:left;
+			margin-left:0;
+			padding-left: 0;
+		}
+	}
+}

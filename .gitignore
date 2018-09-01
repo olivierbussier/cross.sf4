@@ -19,3 +19,7 @@
 .idea
 public/imblog
 public/galerie
+public/temp
+
+sass-tools/.sass-cache/
+sass-tools/node_modules/

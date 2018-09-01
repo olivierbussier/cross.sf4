@@ -1,0 +1,110 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/box-sizing";
+
+@import "cross_variables";
+
+
+html, body {
+	height: 100%;
+}
+
+body {
+	// Margin à forcer sur celles de bootstrap en attendant de trouver comment
+	// centre le body
+	margin: 0px auto!important;
+
+	// Pareil pour le background
+
+	background: #eaeff3 url(images/bg.jpg) repeat-x left top!important;
+  	max-width: $max-wid;
+}
+
+header {
+	padding:0;
+}
+
+.round {
+	@include border-radius($rad);
+}
+
+/* Page */	
+.page {
+	margin: 0 auto;
+	padding: 0;
+	background: #FFF;
+    //@include box-shadow(0px 3px 9px rgba(0,0,0,0.5));
+}
+
+/* Zone du bandeau GUC */
+#bandeau {
+  margin: 0;
+  width:100%;
+  img {
+  	width:100%;
+  	display: block;
+  	padding: 0;
+  	@include border-radius(0);
+  }
+}
+
+// Séparation pub et page
+
+.b-droite {
+	display: block;
+	float: right;
+	width: $pub-width;
+	margin: 5px 0 0 0;
+	img {padding:0 0 $pub-pad-bot 0;}
+}
+
+.b-gauche {
+	display: block;
+	float: left;
+	width: $pag-width;
+}
+
+/* Zone de pied de page */
+#footer {
+	margin: 0 auto 20px auto;
+	padding: 20px;
+	text-align: center;
+	background-color:#345678;
+	p {
+		color:white;
+	}
+}
+
+@media only screen and (max-width : $min-wid-pub) {
+	.b-droite {
+		display: none;
+		//float: right;
+		width: 0;
+		margin: 0;
+		img {padding:0 0 $pub-pad-bot 0;}
+	}
+
+	.b-gauche {
+		display: block;
+		float: left;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width : $max-wid) {
+
+	#siteWrapper {
+
+		// En attendant de trouver une solution plus élégante
+		// Pour garantir que le menu left est affiché en entier
+
+		min-height:920px;
+	}
+
+	#content {
+    	margin: 0px;
+    	padding: 0px;
+    	background: #F0F0F0;
+    	text-align: justify;
+	}
+}

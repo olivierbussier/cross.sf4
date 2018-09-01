@@ -1,0 +1,68 @@
+@import "compass/css3/border-radius";
+
+@import "cross_variables";
+
+.blog {
+	border: 1px solid #dedede;
+	margin: 10px 5px 10px 5px;
+	background-color: #fbfbfb;
+	box-shadow: 5px 5px 5px grey;
+
+	.blog-header{
+		margin: 0;
+		background-color: #394c87;
+		color: white;
+
+		.blog-date {
+			font-size: 10px;
+		}
+
+		.blog-title {
+			font-size: 24px;
+			text-align:center;
+		}
+	}
+
+	.blog-body {
+		margin: 0;
+		padding: 0;
+	}
+
+	.blog-text {
+		color:$blog-t-col;
+		float: left;
+		padding: 5px;
+	}
+
+	.blog-img {
+		float: left;
+		padding: 5px;
+		img {
+			width: 100%;
+			margin: 0 auto;
+			display: block;
+		}
+	}
+
+	.imgleft {
+		float:left;
+	}
+
+	.imgright {
+		float:right;
+	}
+
+	.imgbelow {
+		float:none;
+	}
+
+	.blog-next {
+	}
+
+	.intratitle  {
+	}
+
+	.wlim {	width:  200px; height: auto;}
+	.hlim {	height: 200px; width: auto; }
+	.w100 {	width:  100%; }
+}

@@ -1,0 +1,33 @@
+$color-boxe:#fff; 		    // blanc
+$color-head:#394c87;	    // bleu foncé
+$color-text:#0a8dbd;        // bleu clair
+$color-lien:#23c4ff;        // bleu très clair
+$color-lien-hover:orange;   // Orange
+
+$font-fam:'Raleway', sans-serif;
+//$font-fam:'Roboto', sans-serif;
+//$font-fam:Trebuchet MS, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+$img-max:400px;
+$max-wid:1200px;
+$min-wid-pub:800px; // Largeur minimum pour afficher les pubs
+
+$pub-width:15%;
+$pag-width:100% - $pub-width;
+$pub-pad-bot:5px;
+
+// Grilles
+
+$columns:12;
+$gutter: 20px;
+
+$rad: 4px;
+
+// Blog
+
+$blog-h-back:#f0f0f0; // Header : couleur de fond
+$blog-h-col:#0a8dbd;  // Header : couleur de texte
+$blog-h-dat:orange;	  // Header : couleur de texte de la date
+
+$blog-t-back:#fff;   // Blog : couleur de fond
+$blog-t-col:#5A5C63; // Blog : couleur de texte
+
