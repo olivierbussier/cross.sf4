@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration du Blog{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <div class="container">
+
+        <div class="col-xs-12">
+            <h3>Admin de la page d'accueil </h3>
+        </div>
+
+        <div class="col-xs-12">
+
+            {#
+            // Affichage de la page de saisie/modif d'un blog
+            // ---------------------------------------------------
+            #}
+{% dump(image) %}
+            {{ form_start(formBlogEdit) }}
+            {{ form_row(formBlogEdit.title) }}
+            {{ form_row(formBlogEdit.content) }}
+            {{ form_row(formBlogEdit.link) }}
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            {{ form_row(formBlogEdit.positionImage) }}
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            {{ form_row(formBlogEdit.image) }}
+        </div>
+            {{ form_end(formBlogEdit) }}
+
+        <div class="col-xs-8">
+            {% if orient == 'paysage' %}
+                <h3>paysage</h3>
+                <img class="imgleft wlim" src="{{ asset('temp/' ~ image) }}" />
+            {% else %}
+                <h3>portrait</h3>
+                <img class="imgleft hlim" src="{{ asset('temp/' ~ image) }}" />
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts_end %}
+
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/previewbox.js") }}"></script>
+
+{% endblock %}

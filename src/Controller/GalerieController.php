@@ -112,9 +112,10 @@ class GalerieController extends AbstractController
         $conf = $this->getParameter('conf');
         $base = $this->getParameter('kernel.project_dir') . '/public';
         $path = $conf['galerie.path_img'];
+        $nbParPage = $conf['galerie.nb_par_page'];
 
-        $FirstFile = ($page-1) * GalConfig::nbParPage;
-        $LastFile  = ($page  ) * GalConfig::nbParPage;
+        $FirstFile = ($page-1) * $nbParPage;
+        $LastFile  = ($page  ) * $nbParPage;
 
         // Récupération de la liste des fichiers images du répèrtoire
 
@@ -135,7 +136,7 @@ class GalerieController extends AbstractController
             $nbPages = 1;
         }
 
-        $extrfiles = array_slice($files, $FirstFile, GalConfig::nbParPage);
+        $extrfiles = array_slice($files, $FirstFile, $nbParPage);
 
         $gal_array = [];
 
@@ -145,11 +146,18 @@ class GalerieController extends AbstractController
         foreach ($extrfiles as $k => $fil) {
             $gal = [];
             $gal['name'] = $fil;
-            if (GalConfig::getExt($fil) == 'mp4') {
-                $finThumb = GalConfig::setExt($fil, 'gif');
-            } else {
-                $finThumb = $fil;
+            switch (GalConfig::getExt($fil)) {
+                case 'mp4':
+                    $finThumb = GalConfig::setExt($fil, 'gif');
+                    break;
+                case 'png':
+                    $finThumb = GalConfig::setExt($fil, 'jpg');
+                    break;
+                default:
+                    $finThumb = $fil;
+                    break;
             }
+
             $gal['thumb'] = $rep_thumb . '/' . $repertoire . '/' . $finThumb;
             $gal['sized'] = $rep_sized . '/' . $repertoire . '/' . $fil;
             $gal_array[] = $gal;

@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Blog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +19,67 @@ class BlogRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Blog::class);
+    }
+
+    public function selectByPosition($position) : ?Blog
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.position = :val')
+            ->setParameter('val', $position)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    /**
+     * @param $position
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function selectPosJustBelow($position)
+    {
+        $res = $this->createQueryBuilder('b')
+            ->select('min(b.position)')
+            ->where("b.position > $position")
+            ->getQuery()
+            ->getSingleResult()
+            ;
+        return $res[1];
+    }
+
+    /**
+     * @param $position
+     * @return int
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function selectPosJustAbove($position)
+    {
+        $res = $this->createQueryBuilder('b')
+            ->select('max(b.position)')
+            ->where("b.position < $position")
+            ->getQuery()
+            ->getSingleResult()
+            ;
+        return $res[1];
+    }
+
+    public function deleteById($id)
+    {
+        /**
+         * @var $em EntityManager
+         */
+        $em = $this->getEntityManager();
+        $blog = $this->find($id);
+
+        if (!$blog) {
+            return false;
+        }
+        $em->remove($blog);
+        $em->flush();
+
+        return true;
     }
 
     /**

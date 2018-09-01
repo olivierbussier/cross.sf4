@@ -4,14 +4,53 @@ namespace App\Controller;
 
 use App\Entity\Resultat;
 use App\Form\SaisieResultatsType;
+use App\Repository\ResultatRepository;
+use DateTime;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IntranetController extends AbstractController
 {
+    /**
+     * Utilisé pour convertir les formats les plus courants sous la forme hh:mm:ss
+     *
+     * @param $field
+     * @param $val
+     * @return bool
+     */
+    private function convertTemps($val)
+    {
+        $val = trim($val);
+
+        if ($val == "" || $val == '0' || $val == '0/0/0')
+            $val="00:00:00";
+
+        if (!($res = DateTime::createFromFormat('G i s', $val)) &&
+            !($res = DateTime::createFromFormat('H i s', $val)) &&
+            !($res = DateTime::createFromFormat('H\/i\/s', $val)) &&
+            !($res = DateTime::createFromFormat('G\/i\/s', $val)) &&
+            !($res = DateTime::createFromFormat('G:i:s', $val)) &&
+            !($res = DateTime::createFromFormat('H:i:s', $val)) &&
+            !($res = DateTime::createFromFormat('H\ \h\ i\ \m\n\ s\ \s', $val)) &&
+            !($res = DateTime::createFromFormat('G\ \h\ i\ \m\n\ s\ \s', $val))) {
+            return 'XX:XX:XX';
+        } else {
+            return $res->format("H:i:s");
+        }
+    }
+
+    private function calcVitesse(string $temps, float $distance)
+    {
+        $t = explode(":",$temps);
+        $dt = ($t[0] + $t[1]/60 + $t[2]/3600);
+        $vitesse = $distance / $dt;
+        return sprintf("%02.2fKm/h",$vitesse);
+    }
+
     /**
      * @Route("/intranet", name="intranet")
      */
@@ -40,15 +79,22 @@ class IntranetController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $result = $form->getData();
+            /**
+             * @var UploadedFile $file
+             */
             $file = $form['Fichier']->getData();
-            $annee = $result->getAnneeCross();
-            try {
-                $fd = $file->move('/temp', "file$annee.csv");
 
-                if(!$lignes = file($fd->getPathname())) {
-                    dump("Une erreur c'est produite lors de l'ouverture du fichier.");
-                } else {
-                    $doctrine->getRepository(Resultat::class)->deleteAnnee($annee);
+            $anneeImport = $result->getAnneeCross();
+
+            try {
+                $fd = $file->move('/temp', "file$anneeImport.csv");
+
+                if($lignes = file($fd->getPathname())) {
+                    /**
+                     * @var $resRepo ResultatRepository
+                     */
+                    $resRepo = $doctrine->getRepository(Resultat::class);
+                    $resRepo->deleteAnnee($anneeImport);
                 }
 
 
@@ -57,18 +103,23 @@ class IntranetController extends AbstractController
                     $value = explode(";", $ligne);
 
                     $annee     = intval($value[0]);
-                    if ($annee == 0)
+                    if ($annee == 0 ||
+                       ($anneeImport != 0 && $annee != $anneeImport))
                         continue;
 
                     $result = new Resultat();
+
+                    $temps = $this->convertTemps(trim($value[4]));
+                    $ecart = $this->convertTemps(trim($value[5]));
+                    $vitesse = $this->calcVitesse($temps,10.0);
 
                     $result->setAnneeCross  ($annee    )
                            ->setCourse      (trim($value[1]))
                            ->setClassement  (trim($value[2]))
                            ->setDossard     (trim($value[3]))
-                           ->setTemps       (trim($value[4]))
-                           ->setEcart       (trim($value[5]))
-                           ->setVitesse     (trim($value[6]))
+                           ->setTemps       ($temps)
+                           ->setEcart       ($ecart)
+                           ->setVitesse     ($vitesse)
                            ->setNom         (trim($value[7]))
                            ->setPrenom      (trim($value[8]))
                            ->setCategorie   (trim($value[9]))
@@ -88,47 +139,7 @@ class IntranetController extends AbstractController
                 dump($e);
             }
         }
-/*
 
-
-        if(!empty($_POST['annee_supp'])) {
-
-        $annee_cross = $_POST['annee_supp'];
-        $requete = db_query("select count(*) as nb from ".$db_prefix."classement where annee_cross = '".$annee_cross."'");
-        $result = db_nextrow($requete);
-
-        if ($result['nb'] > 0)	{
-        db_query("Delete from @#@classement where annee_cross = '".$annee_cross."'");
-        $result = db_nextrow($requete);
-        if($result['nb'] == 0) {
-        echo "La suppression des résultats a été réussie avec succès.<br>Rappel année résultat choisie : ".$annee_cross."<br><br>";
-        } else {
-        echo "La suppression des résultats a échoué, veuillez réessayer<br><br>";
-        }
-        } else {
-        echo "Il n'existe aucune données pour cette année..<br>Rappel année résultat choisie : ".$annee_cross."<br><br>";
-        }
-        }
-
-        if(!empty($_POST['date_cross']))
-        {
-        $date_cross = utf8_decode($_POST['date_cross']);
-        $requete = db_query("select count(*) as nb from @#@date_cross");
-        $result = db_nextrow($requete);
-        if($result['nb']>0)	{
-        db_query("UPDATE @#@date_cross SET date ='".$date_cross."' Where id = 'date'");
-        } else {
-        db_query("INSERT INTO @#@date_cross ('date','".$date_cross."'");
-        }
-        }
-
-        $res = db_query("select * from @#@date_cross");
-        $d = db_nextrow($res);
-        $dateCross = $d['date'];
-
-        $root_path="../"; include $root_path."header.php";?>
-
- */
         return $this->render('intranet/admin_resultats.html.twig',[
             'courses' => $courses,
             'formResult' => $form->createView(),

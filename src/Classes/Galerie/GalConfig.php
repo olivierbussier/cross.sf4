@@ -4,22 +4,6 @@ namespace App\Classes\Galerie;
 
 class GalConfig
 {
-    const pathsrc = './images/img';
-    const paththb = './images/thumb';
-
-    const nbParPage = 60;
-
-    const thbMaxHeight = 320;
-    const thbMaxWidth = 320;
-    const qualityThumb = 80;
-
-    const sizMaxHeight = 1080;
-    const sizMaxWidth = 1920;
-    const qualitySized = 80;
-
-    const GALOK = 1;
-    const GALNO = 2;
-    const GALKO = 3;
 
     public static function getVidFiles($rep)
     {

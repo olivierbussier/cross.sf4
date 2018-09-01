@@ -3,18 +3,18 @@
 {% block title %}Affichage Image{% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
+    {# On supprime l'ensemble des chargements fait par la page 'frame' #}
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/cross_frame.css") }}">
     <link rel="stylesheet" type="text/css" href="{{ asset("css/galerie.css") }}">
 {% endblock %}
 
-{% block main_page %}
-
-    {% import 'macros/bouton.html.twig' as control %}
+{% block javascripts_head %}
+    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
 
     <script>
         resizeImg = function() {
-            var screenWidth  = document.body.clientWidth,
-                screenHeight = document.body.clientHeight,
+            var screenWidth  = window.innerWidth,
+                screenHeight = window.innerHeight,
                 pHeight      = 0, //$('#affsize').height(),
                 formHeight   = $('#formpage').height(),
                 xx           = $('#myimage'),
@@ -36,13 +36,6 @@
             }
             xx[0].width  = newWidth;
             xx[0].height = newHeight;
-
-            /*$('#affsize').text('sw='+screenWidth+
-                             ', sh='+screenHeight+
-                             ', ra='+imgRatio+
-                             ', mw='+maxWidth+
-                             ', mh='+maxHeight
-                              );*/
         };
         $( window ).resize(resizeImg);
 
@@ -50,6 +43,12 @@
             resizeImg();
         });
     </script>
+
+{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
 
     <div class="container">
         <div class="col-xs-12">
@@ -71,7 +70,7 @@
                             'arrow-left') }}
                     {% endif %}
 
-                    <button type="submit"><span class="glyphicon glyphicon-home"></span></button>
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-home"></span></button>
 
                     {#{{ control.bouton('', 'Submit', 'Envoyer', 'default', 'glyph:home') }}#}
 
@@ -102,15 +101,21 @@
                 {# ------------------------------ #}
 
                 <iframe class="largvid" src="https://www.youtube.com/embed/{{ filename }}?rel=0" frameborder="0" allowfullscreen>
-                </iframe>\n";
+                </iframe>
 
             {% elseif type == 'video' %}
+
+                {# Affichage d'une vidéo mp4  #}
+                {# -------------------------- #}
 
                 <video class="largvid" id="our-video" controls autoplay width="100%">
                     <source src="{{ asset(baseImages) ~ '/' ~ repertoire ~ '/' ~ filename }}" type="video/mp4">
                 </video>
 
             {% elseif type == 'image' %}
+
+                {# Affichage d'une image jpg  #}
+                {# -------------------------- #}
 
                 <img class="largimag" id="myimage" src="{{ asset(baseImages) ~  '/' ~ repertoire ~ '/' ~ filename }}" />
 

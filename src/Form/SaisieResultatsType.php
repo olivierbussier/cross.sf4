@@ -15,8 +15,10 @@ class SaisieResultatsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $annees = [];
+        $annees['Importer toutes les années présentes dans le fichier'] = 0;
+
         for ($i= 2000;$i<2099;$i++) {
-            $annees[$i] = "$i";
+            $annees["N'importer que l'année $i"] = $i;
         }
 
         $builder

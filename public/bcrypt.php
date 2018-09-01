@@ -56,7 +56,7 @@ class ConvertDatabase
      */
     public function __construct()
     {
-        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross_old');
+        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross');
         $this->baseDst = new mysqli('localhost', 'root', '', 'cross');
     }
 
@@ -156,7 +156,6 @@ class ConvertDatabase
         return true;
     }
 
-
     /**
      * @param $field
      * @param $val
@@ -232,7 +231,7 @@ class ConvertDatabase
     {
 
         if ($val != 0) {
-            $res = $this->baseSrc->query("select * from prod_blog_images where Ref = $val");
+            $res = $this->baseSrc->query("select * from preprod_blog_images where Ref = $val");
             $d = $res->fetch_assoc();
             $txt = "'" . $d['ImageSrc'] . "'";
         } else {
@@ -355,9 +354,9 @@ class ConvertDatabase
     {
         $this->emptyBase();
 
-        $this->transfertDatabase('prod_liste', 'users', $this->correspAdherents);
-        $this->transfertDatabase('prod_blog_text', 'blog', $this->correspBlogTextes);
-        $this->transfertDatabase('prod_classement', 'resultat', $this->correspResultats);
+        $this->transfertDatabase('preprod_liste', 'users', $this->correspAdherents);
+        $this->transfertDatabase('preprod_blog_text', 'blog', $this->correspBlogTextes);
+        $this->transfertDatabase('preprod_classement', 'resultat', $this->correspResultats);
     }
 }
 ?><!DOCTYPE html><html>

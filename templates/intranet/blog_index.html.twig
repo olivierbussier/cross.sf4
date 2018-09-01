@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration du Blog{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <div class="container">
+
+        <div class="col-xs-12">
+            <h3>Admin de la page d'accueil </h3>
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ control.bouton(
+                ' Nouvelle publication',
+                url('blog_admin_create'),
+                '',
+                'btn-block btn-default',
+                'film') }}
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-condensed">
+                    <tr>
+                        <th colspan='3'>Actions</th><th>Titre</th><th>Texte</th><th colspan="2">Position</th>
+                    </tr>
+
+                    {% for blog in blogs %}
+                        <tr>
+                            <td>
+                                {{ control.bouton(
+                                    '',
+                                    url("root_preview") ~ "/" ~ blog.id,
+                                    '',
+                                    'btn btn-default btn-xs previewbox-anchor',
+                                    'eye-open') }}
+                            </td>
+
+                            <td>
+                                {{ control.bouton(
+                                    '',
+                                    url('blog_admin_delete',{blogId: blog.id}),
+                                    '',
+                                    'btn btn-default btn-xs',
+                                    'remove-circle') }}
+                            </td>
+
+                            <td>
+                                {{ control.bouton(
+                                    '',
+                                    url('blog_admin_edit',{blogId: blog.id}),
+                                    '',
+                                    'btn btn-default btn-xs',
+                                    'edit') }}
+                            </td>
+
+                            <td>{{ blog.title }}</td>
+                            <td>{{ blog.content[0:170] }}</td>
+
+                            {% if not loop.first and loop.length > 1 %}
+                                <td>
+                                    {{ control.bouton(
+                                        '',
+                                        url('blog_admin_up') ~ '/' ~ blog.id,
+                                        '',
+                                        'btn btn-default btn-xs',
+                                        'triangle-top') }}
+                                </td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+
+                            {% if not loop.last and loop.length > 1 %}
+                                <td>
+                                    {{ control.bouton(
+                                        '',
+                                        url('blog_admin_down') ~ '/' ~ blog.id,
+                                        '',
+                                        'btn btn-default btn-xs',
+                                        'triangle-bottom') }}
+                                </td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            <?php
+
+                        </tr>
+
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <h3>Pour vous déconnecter :</h3>
+        </div>
+
+        <div class="col-xs-12">
+            {{  control.bouton(
+                " Déconnexion",
+                url('deconnexion'),
+                '',
+                'btn btn-block btn-default'
+
+            ) }}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts_end %}
+
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/previewbox.js") }}"></script>
+
+{% endblock %}

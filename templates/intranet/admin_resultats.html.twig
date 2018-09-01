@@ -21,9 +21,14 @@
         <div class="col-xs-12">
             <h4>Ajouter une série de résultats</h4>
             <p>Séléctionner le fichier .CSV et l'année du résultat</p>
-            <p>Le fichier doit contenir les colonnes (Pas de ligne de titres!) dans l'ordre suivant:</p>
+            <p>Le fichier doit contenir les colonnes (il peut y avoir une ligne de titres qui sera ignorée) dans l'ordre suivant:</p>
 
-            <table class="table table-bordered"><tr><th>course</th><th>rang d'arrivée</th><th>numéro de dossart</th><th>temps</th><th>ecart au 1er</th><th>vitesse</th><th>nom</th><th>prenom</th><th>categorie</th><th>sexe</th><th>ville</th></tr>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Année</th><th>course</th><th>rang d'arrivée</th><th>numéro de dossart</th>
+                    <th>temps</th><th>ecart au 1er</th><th>vitesse</th><th>nom</th><th>prenom</th>
+                    <th>categorie</th><th>sexe</th><th>ville</th>
+                </tr>
             </table>
             {{ form_start(formResult) }}
             {{ form_widget(formResult) }}

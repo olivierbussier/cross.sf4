@@ -89,7 +89,7 @@ var previewbox = (function () {
 				 rv = +(RegExp.$1);
 			}
 			return (rv === -1) ? NaN : rv;
-		}
+		};
 		/*	Arg: 
 				> e = the event object
 			Return:
@@ -100,7 +100,7 @@ var previewbox = (function () {
 			e = e || window.event;
 			e.target = e.target || e.srcElement;
 			return e;
-		}
+		};
 		/*	Arg:
 				> elem = the element to which the event is added
 				> evt = The event string excluding "on"
@@ -112,7 +112,7 @@ var previewbox = (function () {
 			} else if (elem.attachEvent) { // The IE 8 case
 				elem.attachEvent("on" + evt, eHandle);
 			}
-		}
+		};
 		/*	Arg:
 				> elem = the element to which the event is added
 				> evt = The event string excluding "on"
@@ -124,7 +124,7 @@ var previewbox = (function () {
 			} else if (elem.detachEvent) { // The IE 8 case
 				elem.detachEvent("on" + evt, eHandle);
 			}
-		}
+		};
 		/*	Arg:
 				> leaveFor = the toElement or e.relatedTarget of the onmouseout event, meaning the element for which the mouse leaves
 				> anchor = the <a> element calling this::_showBox
@@ -149,7 +149,7 @@ var previewbox = (function () {
 			}
 			
 			return isOut;
-		}
+		};
 		/*	Arg:
 				> href = the href to check
 			Return:
@@ -168,7 +168,7 @@ var previewbox = (function () {
 				}
 			}
 			return is;
-		}
+		};
 		/*	Return: {
 				windowWidth : the width of the client window in px. If uable to find, then -1.
 				windowHeight : the height of the client window in px. If uable to find, then -1.
@@ -184,7 +184,7 @@ var previewbox = (function () {
 			} else {
 				return {windowWidth : -1, windowHeight: -1};
 			}
-		}
+		};
 		/*	Return: {
 				width : the total width of the preview box in px.
 				height : the height of the preview box in px.
@@ -195,7 +195,7 @@ var previewbox = (function () {
 				width : _settings.iframeW + _CONST.boxBorderW * 2 + _settings.boxPadding * 2,
 				height : _settings.iframeH + _CONST.boxBorderW * 2 + _settings.boxPadding * 2
 			};
-		}
+		};
 		/*	Arg:
 				> mousePosX = the horizontal coordinate (according to the client area) of the mouse pointer
 				> mousePosY = the vertical coordinate (according to the client area) of the mouse pointer 
@@ -260,7 +260,7 @@ var previewbox = (function () {
 				_previewbox.style.boxShadow = _settings.boxShadow;
 			}
 				
-		}		
+		};		
 		/*	Arg:
 				> herf = the href to the preview content
 				> mousePosX = refer to this::_setPos
@@ -272,7 +272,7 @@ var previewbox = (function () {
 			_previewbox.iframe.style.width = _settings.iframeW + "px";
 			_previewbox.iframe.style.height = _settings.iframeH + "px";
 			_previewbox.style.display = "block";
-		}
+		};
 		/*
 		*/
 		var _hideBox = function () {
@@ -280,7 +280,7 @@ var previewbox = (function () {
 			_previewbox.display = "none";
 			_previewbox.style.top = "10000px";
 			_previewbox.style.left = "10000px";
-		}
+		};
 		/*	Arg:
 				> div = one <div> element to be converted into the preview box
 			Return:
@@ -353,7 +353,7 @@ var previewbox = (function () {
 						}
 					}
 				}
-			}
+			};
 			/*	Arg:
 					> func = One function, shall implement the below interface:
 						     * Arg:
@@ -366,7 +366,7 @@ var previewbox = (function () {
 				if (typeof func === "function") {
 					_previewbox_queueOnmouseout.push(func);
 				}
-			}
+			};
 			
 			if (_getIEVersion() == 8) {
 				_addEvent(_previewbox, "mouseleave", _previewbox_runQueue);
@@ -377,7 +377,7 @@ var previewbox = (function () {
 				_previewbox.style.backgroundImage = "";
 			});
 			return _previewbox;
-		}
+		};
 		/*	Arg:
 				> a = one <a> element to be converted into the preview anchor
 			Return:
@@ -407,7 +407,7 @@ var previewbox = (function () {
 					if (_isHref(e.target.href)) {
 						_showBox(e.target.href, e.clientX, e.clientY);
 					}
-				}
+				};
 				/*
 				*/
 				var _a_callHideBox = function (e) {
@@ -436,7 +436,7 @@ var previewbox = (function () {
 							});
 						}
 					}
-				}
+				};
 				
 				a.anchorType = 0;
 				
@@ -448,7 +448,7 @@ var previewbox = (function () {
 				}
 			}
 			return a;
-		}
+		};
 		/*
 		*/
 		var _prepPreview = function () {
@@ -474,7 +474,7 @@ var previewbox = (function () {
 
 			// Search all the <a> elems with our special class and then register all the findings
 			publicProps.regisBySearching();
-		}
+		};
 
 		var publicProps = {
 			/*	Arg:
