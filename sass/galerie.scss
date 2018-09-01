@@ -1,125 +1,129 @@
 @import "compass/css3/border-radius";
 
-	a {
-		margin: 0;
-		padding: 0;
-	}
-
-	.gpara {
-		clear: both;
-		display: block;
-		float: none;
-		width: 100%;
-		text-align: justify;
-	}
-
-	.galrow {
-		display: block;
-		float: left;
-		width: 100%;
-		padding: 0 2px;
-		&:after {
-			clear: both;
-		}
-	}
-
-	.text-cond {
-		&:nth-of-type(even) {
-			text-align: left;
-		}
-		&:nth-of-type(odd) {
-			text-align: right;
-		}
-	}
-	.bloc-left {
-		float: left;
-	}
-	.bloc-right {
-		float: right;
-	}
-
-	// Affichage des thums aléatoires des galeries
-	// --------------------------------------------
-
-	.globimag {
-		display: block;
-		float: left;
-		width: 100%;
-		//height: 180px;
-		padding: 0;
-		margin: 0;
-		@include border-radius(0);
-		//height: 180px;
-		//margin-top: 15px;
-		//max-width: 100%;
-	}
-
-	// Affichage des thums des images de la galerie
-	// --------------------------------------------
-
-	.imagrow {
-		display: block;
-		float: left;
-		margin: 0;
-		padding: 1px 0;
-	}
-
-	.imag {		// Classe img
-		display: block;
-		float: left;
-		width: auto;
-		padding: 0;
-		margin: 0;
-		@include border-radius(0);
-	}
-
-	.imaglink {
-		margin: auto;
-		display: block;
-		float: left;
-	}
-
-	// Afficha d'une image en grand
-	// --------------------------------
-
-	.largimag {		// Classe img
-		display: block;
-		//max-width: 95vw;
-		//max-height: 90vh;
-		//width: initial;
-		//height: initial;
-		padding: 0;
-		margin: 0 auto;
-		@include border-radius(0);
-	}
-
-	.largvid {		// Classe img
-		display: block;
-		max-width: 95vw;
-		max-height: 90vh;
-		width: 1920px;
-		height: 1080px;
-		padding: 0;
-		margin: 0 auto;
-		@include border-radius(0);
-	}
-
-	.galerie {
-		display: block;
-		float: left;
-		width: 100%;
-	}
-
-	.margz {
-		margin: 0;
-		padding: 1px;
-	}
-
-	.unegalerie {
-		display: block;
-		float: left;
-		width: 100%;
+a {
+	margin: 0;
+	padding: 0;
 }
 
-	.imgleft  { float: left; }
-	.imgright { float: right;}
+.center {
+	text-align: center;
+}
+
+.gpara {
+	clear: both;
+	display: block;
+	float: none;
+	width: 100%;
+	text-align: justify;
+}
+
+.galrow {
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 0 2px;
+	&:after {
+		clear: both;
+	}
+}
+
+.text-cond {
+	&:nth-of-type(even) {
+		text-align: left;
+	}
+	&:nth-of-type(odd) {
+		text-align: right;
+	}
+}
+.bloc-left {
+	float: left;
+}
+.bloc-right {
+	float: right;
+}
+
+// Affichage des thums aléatoires des galeries
+// --------------------------------------------
+
+.globimag {
+	display: block;
+	float: left;
+	width: 100%;
+	//height: 180px;
+	padding: 0;
+	margin: 0;
+	@include border-radius(0);
+	//height: 180px;
+	//margin-top: 15px;
+	//max-width: 100%;
+}
+
+// Affichage des thums des images de la galerie
+// --------------------------------------------
+
+.imagrow {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 1px 0;
+}
+
+.imag {		// Classe img
+	display: block;
+	float: left;
+	width: auto;
+	padding: 0;
+	margin: 0;
+	@include border-radius(0);
+}
+
+.imaglink {
+	margin: auto;
+	display: block;
+	float: left;
+}
+
+// Afficha d'une image en grand
+// --------------------------------
+
+.largimag {		// Classe img
+	display: block;
+	//max-width: 95vw;
+	//max-height: 90vh;
+	//width: initial;
+	//height: initial;
+	padding: 0;
+	margin: 0 auto;
+	@include border-radius(0);
+}
+
+.largvid {		// Classe img
+	display: block;
+	max-width: 95vw;
+	max-height: 90vh;
+	width: 1920px;
+	height: 1080px;
+	padding: 0;
+	margin: 0 auto;
+	@include border-radius(0);
+}
+
+.galerie {
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.margz {
+	margin: 0;
+	padding: 1px;
+}
+
+.unegalerie {
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.imgleft  { float: left; }
+.imgright { float: right;}

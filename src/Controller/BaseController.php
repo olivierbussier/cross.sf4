@@ -31,7 +31,7 @@ class BaseController extends AbstractController
             $posts[0] = $post;
             $preview = true;
         } else {
-            $posts = $doctrine->getRepository(Blog::class)->findAll();
+            $posts = $doctrine->getRepository(Blog::class)->getAllPosts();
             $preview = false;
         }
         return $this->render(

@@ -5,56 +5,61 @@ a {
 }
 
 /* line 8, ../../sass/galerie.scss */
+.center {
+  text-align: center;
+}
+
+/* line 12, ../../sass/galerie.scss */
 .gpara {
+  clear: both;
   display: block;
   float: none;
-  clear: both;
   width: 100%;
   text-align: justify;
 }
 
-/* line 16, ../../sass/galerie.scss */
+/* line 20, ../../sass/galerie.scss */
 .galrow {
   display: block;
   float: left;
   width: 100%;
   padding: 0 2px;
 }
-/* line 21, ../../sass/galerie.scss */
+/* line 25, ../../sass/galerie.scss */
 .galrow:after {
   clear: both;
 }
 
-/* line 27, ../../sass/galerie.scss */
+/* line 31, ../../sass/galerie.scss */
 .text-cond:nth-of-type(even) {
   text-align: left;
 }
-/* line 30, ../../sass/galerie.scss */
+/* line 34, ../../sass/galerie.scss */
 .text-cond:nth-of-type(odd) {
   text-align: right;
 }
 
-/* line 34, ../../sass/galerie.scss */
+/* line 38, ../../sass/galerie.scss */
 .bloc-left {
   float: left;
 }
 
-/* line 37, ../../sass/galerie.scss */
+/* line 41, ../../sass/galerie.scss */
 .bloc-right {
   float: right;
 }
 
-/* line 44, ../../sass/galerie.scss */
+/* line 48, ../../sass/galerie.scss */
 .globimag {
   display: block;
   float: left;
   width: 100%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   border-radius: 0;
 }
 
-/* line 60, ../../sass/galerie.scss */
+/* line 64, ../../sass/galerie.scss */
 .imagrow {
   display: block;
   float: left;
@@ -62,69 +67,71 @@ a {
   padding: 1px 0;
 }
 
-/* line 67, ../../sass/galerie.scss */
+/* line 71, ../../sass/galerie.scss */
 .imag {
   display: block;
   float: left;
   width: auto;
-  margin: 0;
   padding: 0;
+  margin: 0;
   border-radius: 0;
 }
 
-/* line 76, ../../sass/galerie.scss */
+/* line 80, ../../sass/galerie.scss */
 .imaglink {
+  margin: auto;
   display: block;
   float: left;
-  margin: auto;
 }
 
-/* line 85, ../../sass/galerie.scss */
+/* line 89, ../../sass/galerie.scss */
 .largimag {
   display: block;
-  margin: 0 auto;
   padding: 0;
+  margin: 0 auto;
   border-radius: 0;
 }
 
-/* line 96, ../../sass/galerie.scss */
+/* line 100, ../../sass/galerie.scss */
 .largvid {
   display: block;
-  width: 1920px;
   max-width: 95vw;
-  height: 1080px;
   max-height: 90vh;
-  margin: 0 auto;
+  width: 1920px;
+  height: 1080px;
   padding: 0;
+  margin: 0 auto;
   border-radius: 0;
 }
 
-/* line 107, ../../sass/galerie.scss */
+/* line 111, ../../sass/galerie.scss */
 .galerie {
   display: block;
   float: left;
   width: 100%;
 }
 
-/* line 113, ../../sass/galerie.scss */
+/* line 117, ../../sass/galerie.scss */
 .margz {
   margin: 0;
   padding: 1px;
 }
 
-/* line 118, ../../sass/galerie.scss */
+/* line 122, ../../sass/galerie.scss */
 .unegalerie {
   display: block;
   float: left;
   width: 100%;
 }
 
-/* line 124, ../../sass/galerie.scss */
+/* line 128, ../../sass/galerie.scss */
 .imgleft {
   float: left;
 }
 
-/* line 125, ../../sass/galerie.scss */
+/* line 129, ../../sass/galerie.scss */
 .imgright {
   float: right;
 }
+
+/*# sourceMappingURL=galerie.css.map */
