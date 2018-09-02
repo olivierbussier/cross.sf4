@@ -103,9 +103,9 @@ class GalerieController extends AbstractController
      *
      * @Route("/galerie/{repertoire}/{page}", name="galerie")
      */
-    public function galerie(Request $request, $repertoire = '/', $page = 1)
+    public function galerie(Request $request, $repertoire = '', $page = 1)
     {
-        if ($repertoire == '/') {
+        if ($repertoire == '') {
             $this->redirectToRoute('galeries');
         }
 
@@ -208,6 +208,44 @@ class GalerieController extends AbstractController
             $gal_array[] = $gal;
         }
         return $this->render('galerie/allGaleries.html.twig', [
+            'baseImagesThumb'   => $conf['galerie.path_thumb'],
+            'baseImagesSized'   => $conf['galerie.path_sized'],
+            'dirs'              => $gal_array
+        ]);
+    }
+    /**
+     * Index de toutes les galeries disponibles
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/intranet/admin_galeries/", name="admin_galeries")
+     */
+    public function admin_galeries(Request $request)
+    {
+        // Lister les galeries
+
+        $conf = $this->getParameter('conf');
+        $base = $this->getParameter('kernel.project_dir') . '/public';
+        $path = $conf['galerie.path_img'];
+        $dirs = GalConfig::GetDir($base . '/' .$path);
+
+        // Construction des galeries a afficher
+
+        $gal_array = [];
+
+        foreach ($dirs as $v) {
+            $gal = [];
+            $gal['path'] = $v;
+            $gal['title'] = GalConfig::convertTitle($v);
+            $files = GalConfig::getImgFiles($path . '/' . $v);
+            $file = [];
+            foreach ($files as $v) {
+                $file[] = ['name' => $v, 'rand' => rand(0, 99999999)];
+
+            }
+            $gal['files'] = $file;
+            $gal_array[] = $gal;
+        }
+        return $this->render('intranet/admin_galeries.html.twig', [
             'baseImagesThumb'   => $conf['galerie.path_thumb'],
             'baseImagesSized'   => $conf['galerie.path_sized'],
             'dirs'              => $gal_array

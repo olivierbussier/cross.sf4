@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/galerie.css") }}">
+{% endblock %}
+
+{% block javascripts_head %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("js/resize.js") }}"></script>
+{% endblock %}
+
+{% block main_page %}
+
+    {% import 'macros/bouton.html.twig' as control %}
+
+    <div class="container">
+
+        <div class="col-xs-12">
+            <h3>Générer les thumbnails</h3>
+        </div>
+
+        <div class="col-xs-12">
+
+            {% for dir in dirs %}
+
+                <h3>Galerie : {{ dir.title }}</h3>
+                    {% set files = dir.files %}
+
+                    {% for file in files %}
+                        <img src="/galerie/thumb/{{ dir.path }}/{{ file.name}}?rand={{ file.rand }}">
+                    {% endfor %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

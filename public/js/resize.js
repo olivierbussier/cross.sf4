@@ -1,5 +1,5 @@
 resizeGal = function() {
-	var screenWidth = $('body').width(),
+	var screenWidth = $('#b-gauche').width(),
 		imgWidth,  imgHeight,
 		imgWidthc, imgHeightc = 180,
 		totLargeur = 0,

@@ -19,6 +19,23 @@ class BaseController extends AbstractController
 {
     /**
      * @Route("/", name="root")
+     * @param RegistryInterface $doctrine
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function index(RegistryInterface $doctrine)
+    {
+        $posts = $doctrine->getRepository(Blog::class)->getAllPosts();
+
+        // affichage de toutes les images du rep pub
+
+        $pubs = glob('public/imp/*.*');
+
+        return $this->render(
+            'pages/index.html.twig', [
+                'posts' => $posts
+        ]);
+    }
+    /**
      * @Route("/preview/{blogId}", name="root_preview")
      * @param RegistryInterface $doctrine
      * @param string $blogId
@@ -26,18 +43,15 @@ class BaseController extends AbstractController
      */
     public function indexPreviewBlog(RegistryInterface $doctrine, $blogId = '')
     {
-        if ($blogId != '') {
-            $post = $doctrine->getRepository(Blog::class)->find($blogId);
-            $posts[0] = $post;
-            $preview = true;
-        } else {
-            $posts = $doctrine->getRepository(Blog::class)->getAllPosts();
-            $preview = false;
+        if ($blogId == '') {
+            $this->redirectToRoute('root');
         }
+
+        $post = $doctrine->getRepository(Blog::class)->find($blogId);
+
         return $this->render(
-            'pages/index.html.twig', [
-            'posts' => $posts,
-            'preview' => $preview
+            'pages/index_preview.html.twig', [
+            'post' => $post,
         ]);
     }
 

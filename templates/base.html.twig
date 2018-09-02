@@ -47,9 +47,8 @@
     {% endblock %}
 
     {% block javascripts_head %}
-    <script type="text/javascript" src="{{ asset("js/jquery-3.1.1.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/menu_top.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/bootstrap.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("js/jquery-3.1.1.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("js/bootstrap.min.js") }}"></script>
     {% endblock %}
 
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -100,7 +99,7 @@
                                             {{ Menu.item('jeunes', 'Les parcours jeune sur le stade') }}
                                         </ul>
                                     </li>
-                                    {{ Menu.item('inscription', 'Inscription', '', 'menubapteme') }}
+                                    {{ Menu.item('inscription', '<span class="flashbegin">Inscription</span>', '', 'menubapteme') }}
                                     {{ Menu.item('resultats', 'Résultats') }}
                                     {{ Menu.item('galerie', 'Galerie Photos') }}
                                     <li><a href="#">Informations pratiques</a>
@@ -115,10 +114,40 @@
                                 </ul>
                             </nav>
                         </header>
-                        <div id="content" class="round pad-menu">
 
-                        {% block main_page %}{% endblock %}
+                        <script>
+                            function updateTransition() {
+                                var el = document.querySelector("span.flashbegin");
 
+                                if (el) {
+                                    el.className = "flashend";
+                                } else {
+                                    el = document.querySelector("span.flashend");
+                                    el.className = "flashbegin";
+                                }
+                                return el
+                            }
+                            var intervalID = window.setInterval(updateTransition, 500);
+                        </script>
+
+                        <div id="content" class="round" name="ifr">
+                            <div class="b-droite">
+
+                                {# affichage de toutes les images du rep pub #}
+
+								{% for pub in getPubs(asset('imp')) %}
+
+									<img class="w100" src="{{ asset(pub) }}">
+
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="b-gauche" id="b-gauche">
+
+                                {% block main_page %}{% endblock %}
+
+                            </div>
                         </div> <!-- div id="content" class="round" name="ifr" -->
                         <div style="clear: both"></div>
                     </div>
@@ -134,7 +163,9 @@
             </div>
         </div>
     {% endblock %}
-    {% block body_end %}{% endblock %}
+    {% block body_end %}
+        <script type="text/javascript" src="{{ asset("js/menu_top.js") }}"></script>
+    {% endblock %}
     </body>
     {% block javascripts_end %}{% endblock %}
     {% block footer_end %}{% endblock %}
