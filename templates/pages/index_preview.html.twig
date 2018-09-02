@@ -21,11 +21,11 @@
 
             {% if post.Link != "" %}
 
-                {% set htmlimg = "<a href=\"" ~ post.link ~ "\"><img src=\"" ~ asset("imblog/" ~ post.image) ~ "\"></a>" %}
+                {% set htmlimg = "<a href=\"" ~ post.link ~ "\"><img src=\"" ~ asset(imblog ~ "/" ~ post.image) ~ "\"></a>" %}
 
             {% else %}
 
-                {% set htmlimg = "<img src=\"" ~ asset("imblog/" ~ post.image) ~ "\">" %}
+                {% set htmlimg = "<img src=\"" ~ asset(imblog ~ "/" ~ post.image) ~ "\">" %}
 
             {% endif %}
 

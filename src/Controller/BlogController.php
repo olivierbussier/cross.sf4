@@ -9,11 +9,10 @@ use App\Repository\BlogRepository;
 use DateTime;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Date;
+
 
 class BlogController extends AbstractController
 {
@@ -169,6 +168,9 @@ class BlogController extends AbstractController
         $blogsRepo = $doctrine->getRepository(Blog::class);
         $em = $this->getDoctrine()->getManager();
 
+        $conf = $this->getParameter('conf');
+        $dirImages = $conf['blog.images'];
+
         if ($blogId == 0) {
             $blog = new Blog();
         } else {
@@ -241,10 +243,10 @@ class BlogController extends AbstractController
                         $largeur = 400;
                         break;
                 }
-                $im = BlogHelpers::StorePhoto($image->getPathname(), 'imblog', $largeur);
+                $im = BlogHelpers::StorePhoto($image->getPathname(), $dirImages, $largeur);
 
                 if ($oldImage) {
-                    unlink("imblog/$oldImage");
+                    unlink("$dirImages/$oldImage");
                 }
                 $blog->setImage($im);
             }
@@ -271,6 +273,9 @@ class BlogController extends AbstractController
         if ($blogId == 0) {
             $this->redirectToRoute('root');
         }
+
+        $conf = $this->getParameter('conf');
+        $dirImages = $conf['blog.images'];
         /**
          * @var $blogsRepo BlogRepository
          */
@@ -282,7 +287,7 @@ class BlogController extends AbstractController
 
         if ($image) {
             // Une image existe
-            unlink("imblog/$image");
+            unlink("$dirImages/$image");
             $blog->setImage(null);
             $em->persist($blog);
             $em->flush();

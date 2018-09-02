@@ -26,12 +26,16 @@ class BaseController extends AbstractController
     {
         $posts = $doctrine->getRepository(Blog::class)->getAllPosts();
 
+        $conf = $this->getParameter('conf');
+        $dirImages = $conf['blog.images'];
+
         // affichage de toutes les images du rep pub
 
         $pubs = glob('public/imp/*.*');
 
         return $this->render(
             'pages/index.html.twig', [
+                'imblog' => $dirImages,
                 'posts' => $posts
         ]);
     }
@@ -49,9 +53,13 @@ class BaseController extends AbstractController
 
         $post = $doctrine->getRepository(Blog::class)->find($blogId);
 
+        $conf = $this->getParameter('conf');
+        $dirImages = $conf['blog.images'];
+
         return $this->render(
             'pages/index_preview.html.twig', [
             'post' => $post,
+            'imblog' => $dirImages
         ]);
     }
 

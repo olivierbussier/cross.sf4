@@ -19,6 +19,7 @@ parameters:
         galerie.sizedHeight: 1080
         galerie.sizedWidth:  1920
         galerie.sizedQuality:  80
+        blog.images: 'imblog'
 
 
 services:
