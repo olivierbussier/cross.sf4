@@ -16,11 +16,20 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BlogRepository extends ServiceEntityRepository
 {
+    /**
+     * BlogRepository constructor.
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Blog::class);
     }
 
+    /**
+     * @param $position
+     * @return Blog|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function selectByPosition($position) : ?Blog
     {
         return $this->createQueryBuilder('b')

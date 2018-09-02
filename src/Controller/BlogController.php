@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Classes\Blog\BlogHelpers;
 use App\Entity\Blog;
 use App\Form\BlogEditType;
 use App\Repository\BlogRepository;
+use DateTime;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 
 class BlogController extends AbstractController
 {
@@ -150,54 +154,139 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/intranet/admin_blog/edit/new", name="blog_admin_create")
+     * @Route("/intranet/admin_blog/edit/{blogId}", name="blog_admin_edit")
      * @param RegistryInterface $doctrine
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function create(RegistryInterface $doctrine, Request $request)
+    public function create(RegistryInterface $doctrine, Request $request, $blogId=0)
     {
-        $blog = new Blog();
+        /**
+         * @var $blogsRepo BlogRepository
+         */
+        $blogsRepo = $doctrine->getRepository(Blog::class);
+        $em = $this->getDoctrine()->getManager();
+
+        if ($blogId == 0) {
+            $blog = new Blog();
+        } else {
+            $blog = $blogsRepo->find($blogId);
+        }
 
         $form = $this->createForm(BlogEditType::class, $blog);
 
         $form->handleRequest($request);
 
-        $imageName = '';
         $orient = '';
+        $im = $blog->getImage();
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /**
-             * @var UploadedFile $image
-             */
-            $image = $form['image']->getData();
+            if ($blog->getId() == null) {
+                // Nouveau, remplir postedAt et Position
 
-            $imageName = md5(uniqid()) . '.' . $image->guessExtension();
+                // Set Position
 
-            $info = getimagesize($image->getPathname());
+                $pos = $blogsRepo->selectPosJustAbove(999999999);
+                $blog->setPosition($pos + 1);
 
-            if ($info[0] > $info[1]) {
-                $orient = 'paysage';
-            } else {
-                $orient = 'portrait';
+                // Set Date
+
+                $blog->setPostedAt(new DateTime());
             }
-            $image->move('temp',$imageName);
 
+            $fl = $blog->getFile();
+
+            if ($fl != null) {
+
+                $oldImage = null;
+
+                if ($im != null) {
+                    // Une image existe déjà et une nouvelle est choisie
+                    // Mémorisation pour suppression
+                    $oldImage = $im;
+                }
+
+                // Gestion de l'image
+                // Si création, pas besoin de tester si une ancienne image est à effacer
+
+                // Mise à l'échelle de la photo:
+                //  - Si l'image est sur toute la largeur, alors on réduit a 1200px en largeur
+                //  - Si l'image est a gauche ou a droite, alors on réduit a 400px en largeur
+
+                /**
+                 * @var UploadedFile $image
+                 */
+                $image = $form['file']->getData();
+
+                $info = getimagesize($image->getPathname());
+
+                if ($info[0] > $info[1]) {
+                    $orient = 'paysage';
+                } else {
+                    $orient = 'portrait';
+                }
+                switch ($blog->getPositionImage()) {
+                    case 'dessus':
+                    case 'dessous':
+                        $largeur = 1400;
+                        break;
+                    case 'gauche':
+                    case 'droite':
+                        $largeur = 400;
+                        break;
+                    default:
+                        $largeur = 400;
+                        break;
+                }
+                $im = BlogHelpers::StorePhoto($image->getPathname(), 'imblog', $largeur);
+
+                if ($oldImage) {
+                    unlink("imblog/$oldImage");
+                }
+                $blog->setImage($im);
+            }
+            $em->persist($blog);
+            $em->flush();
         }
 
         return $this->render('intranet/blog_edit.html.twig',[
             'formBlogEdit' => $form->createView(),
-            'image' => $imageName,
-            'orient' => $orient
+            'orient' => $orient,
+            'image'  => $im,
+            'id'     => $blogId
         ]);
     }
 
     /**
-     * @Route("/intranet/admin_blog/edit/{blogId}", name="blog_admin_edit")
+     * @Route("intranet/admin_blog/delete_image/{blogId}", name="blog_admin_delete_image")
      * @param RegistryInterface $doctrine
+     * @param int $blogId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function edit(RegistryInterface $doctrine, $blogId)
+    public function deleteImage(RegistryInterface $doctrine, $blogId = 0)
     {
+        if ($blogId == 0) {
+            $this->redirectToRoute('root');
+        }
+        /**
+         * @var $blogsRepo BlogRepository
+         */
+        $em = $this->getDoctrine()->getManager();
+        $blogsRepo = $doctrine->getRepository(Blog::class);
+        $blog = $blogsRepo->find($blogId);
 
+        $image = $blog->getImage();
+
+        if ($image) {
+            // Une image existe
+            unlink("imblog/$image");
+            $blog->setImage(null);
+            $em->persist($blog);
+            $em->flush();
+        }
+        return $this->redirectToRoute("blog_admin_edit",['blogId' => $blogId]);
     }
 }

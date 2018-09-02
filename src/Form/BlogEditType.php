@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Classes\Blog\BlogHelpers;
 use App\Entity\Blog;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -12,12 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BlogEditType extends AbstractType
 {
-    public const AUCUNE  = 0;
-    public const DESSUS  = 1;
-    public const DESSOUS = 2;
-    public const GAUCHE  = 3;
-    public const DROITE  = 4;
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -42,24 +37,14 @@ class BlogEditType extends AbstractType
             ->add('positionImage',ChoiceType::class,[
                 'label' => 'Position de l\'image',
                 'choices' => [
-                    'Dessus'  => self::DESSUS,
-                    'Dessous' => self::DESSOUS,
-                    'Gauche'  => self::GAUCHE,
-                    'Droite'  => self::DROITE
+                    'Dessus'  => 'dessus' ,
+                    'Dessous' => 'dessous',
+                    'Gauche'  => 'gauche' ,
+                    'Droite'  => 'droite'
                 ]
             ])
-            ->add('image', FileType::class, ['empty_data' => '', 'required' => false])
-            ->add('Supprimer l\'image', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-default btn-block btn-danger '
-                ]
-            ])
+            ->add('file', FileType::class, ['empty_data' => '', 'required' => false])
             ->add('Enregister', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-default btn-block'
-                ]
-            ])
-            ->add('Annuler', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-default btn-block'
                 ]

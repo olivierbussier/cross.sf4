@@ -18,7 +18,7 @@
                 // Affichage de la page de saisie/modif d'un blog
                 // ---------------------------------------------------
                 #}
-    {% dump(image) %}
+
                 {{ form_start(formBlogEdit) }}
                 {{ form_row(formBlogEdit.title) }}
                 {{ form_row(formBlogEdit.content) }}
@@ -33,22 +33,37 @@
             </div>
 
             <div class="col-xs-8">
-                {% if orient == 'paysage' %}
-                    <h3>paysage</h3>
-                    <img class="imgleft wlim" src="{{ asset('temp/' ~ image) }}" />
+                {% if image %}
+                    {% if orient == 'paysage' %}
+                        <h3>paysage</h3>
+                        <img class="imgleft wlim" src="{{ asset('imblog/' ~ image) }}" />
+                    {% else %}
+                        <h3>portrait</h3>
+                        <img class="imgleft hlim" src="{{ asset('imblog/' ~ image) }}" />
+                    {% endif %}
                 {% else %}
-                    <h3>portrait</h3>
-                    <img class="imgleft hlim" src="{{ asset('temp/' ~ image) }}" />
+                    <img class="imgleft hlim" src="{{ asset('im/default.jpg') }}" />
                 {% endif %}
             </div>
 
             <div class="col-xs-4">
-                {{ form_row(formBlogEdit.image) }}
+                {{ form_row(formBlogEdit.file) }}
                 {{ form_row(formBlogEdit.positionImage) }}
+                {{ control.bouton(
+                    'Supprimer l\'image',
+                    url('blog_admin_delete_image') ~ '/' ~ id,
+                    '',
+                    'btn btn-default btn-danger btn-block',
+                    'triangle-cross') }}
+                {{ form_row(formBlogEdit.Enregister) }}
+                {{ control.bouton(
+                    'Annuler',
+                url('blog_admin_index'),
+                '',
+                'btn btn-default',
+                'triangle-home') }}
                 {{ form_end(formBlogEdit) }}
             </div>
-
-
         </div>
     </div>
 

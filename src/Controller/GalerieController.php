@@ -214,7 +214,7 @@ class GalerieController extends AbstractController
         ]);
     }
     /**
-     * Index de toutes les galeries disponibles
+     * Création de tous les thumbnails de toutes les galeries disponibles
      *
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/intranet/admin_galeries/", name="admin_galeries")
