@@ -146,11 +146,4 @@ class IntranetController extends AbstractController
             'message' => $message
         ]);
     }
-    /**
-     * @Route("/intranet/admin_blog", name="intranet_admin_blog")
-     */
-    public function admin_blog()
-    {
-        return $this->render('intranet/admin_blog.html.twig');
-    }
 }

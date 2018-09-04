@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Classes\Blog\BlogHelpers;
 use App\Entity\Blog;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -22,12 +23,18 @@ class BlogEditType extends AbstractType
                     'placeholder' => 'Entrez un titre pour l\'article'
                 ]
             ])
-            ->add('content', null, [
+            ->add('content', CKEditorType::class, [
+                'label' => 'Contenu de l\'article',
+                'config' => [
+                    'uiColor' => '#ffffff'
+                ]
+            ])
+/*            ->add('content', null, [
                 'label' => 'Contenu de l\'article',
                 'attr' => [
                     'placeholder' => 'Entrez le texte à afficher'
                 ]
-            ])
+            ])*/
             ->add('link', null, [
                 'label' => 'Lien vers un site',
                 'attr' => [

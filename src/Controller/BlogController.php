@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/intranet/admin_blog/index", name="blog_admin_index")
+     * @Route("/intranet/admin_blog", name="blog_admin_index")
      * @param RegistryInterface $doctrine
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -152,7 +152,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/intranet/admin_blog/edit/new", name="blog_admin_create")
+     * @Route("/intranet/admin_blog/new", name="blog_admin_create")
      * @Route("/intranet/admin_blog/edit/{blogId}", name="blog_admin_edit")
      * @param RegistryInterface $doctrine
      * @param Request $request
@@ -258,7 +258,8 @@ class BlogController extends AbstractController
             'formBlogEdit' => $form->createView(),
             'orient' => $orient,
             'image'  => $im,
-            'id'     => $blogId
+            'id'     => $blogId,
+            'imblog' => $dirImages
         ]);
     }
 

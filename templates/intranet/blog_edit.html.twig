@@ -36,10 +36,10 @@
                 {% if image %}
                     {% if orient == 'paysage' %}
                         <h3>paysage</h3>
-                        <img class="imgleft wlim" src="{{ asset('imblog/' ~ image) }}" />
+                        <img class="imgleft wlim" src="{{ asset(imblog ~ '/' ~ image) }}" />
                     {% else %}
                         <h3>portrait</h3>
-                        <img class="imgleft hlim" src="{{ asset('imblog/' ~ image) }}" />
+                        <img class="imgleft hlim" src="{{ asset(imblog ~ '/' ~ image) }}" />
                     {% endif %}
                 {% else %}
                     <img class="imgleft hlim" src="{{ asset('im/default.jpg') }}" />
@@ -49,19 +49,25 @@
             <div class="col-xs-4">
                 {{ form_row(formBlogEdit.file) }}
                 {{ form_row(formBlogEdit.positionImage) }}
+
                 {{ control.bouton(
                     'Supprimer l\'image',
-                    url('blog_admin_delete_image') ~ '/' ~ id,
+                    url('blog_admin_delete_image', {'blogId': id}),
                     '',
                     'btn btn-default btn-danger btn-block',
-                    'triangle-cross') }}
+                    'triangle-cross')
+                }}
+
                 {{ form_row(formBlogEdit.Enregister) }}
+
                 {{ control.bouton(
                     'Annuler',
-                url('blog_admin_index'),
-                '',
-                'btn btn-default',
-                'triangle-home') }}
+                    url('blog_admin_index'),
+                    '',
+                    'btn btn-default btn-block',
+                    'triangle-home')
+                }}
+
                 {{ form_end(formBlogEdit) }}
             </div>
         </div>

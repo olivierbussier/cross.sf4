@@ -4,7 +4,8 @@ class ConvertDatabase
 {
     /**
      * @var array
-     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username,getImage,nonnul,convertTemps
+     * @uses set_roles,json,create_password,nullable,integer,boolean,myDate,create_username,getImage,nonnul
+     * @uses convertTemps,categorie
      */
     private $correspAdherents = [
         "id"                    => ["Ref"           , "integer"],
@@ -38,7 +39,7 @@ class ConvertDatabase
         //"vitesse"               => ["vitesse"       , ""],  // Calculé par convertTemps
         "nom"                   => ["nom"           , ""],
         "prenom"                => ["prenom"        , ""],
-        "categorie"             => ["categorie"     , ""],
+        "categorie"             => ["categorie"     , "categorie"],
         "sexe"                  => ["sexe"          , ""],
         "ville"                 => ["ville"         , ""]
     ];
@@ -51,13 +52,56 @@ class ConvertDatabase
     private $baseSrc;
     private $baseDst;
 
+    private $translation = [
+            'à' => 'a',            'á' => 'a',            'â' => 'a',            'ã' => 'a',            'ä' => 'a',
+            'ç' => 'c',
+            'è' => 'e',            'é' => 'e',            'ê' => 'e',            'ë' => 'e',
+            'ì' => 'i',            'í' => 'i',            'î' => 'i',            'ï' => 'i',
+            'ñ' => 'n',
+            'ò' => 'o',            'ó' => 'o',            'ô' => 'o',            'õ' => 'o',            'ö' => 'o',
+            'ù' => 'u',            'ú' => 'u',            'û' => 'u',            'ü' => 'u',
+            'ý' => 'y',            'ÿ' => 'y',
+            'À' => 'A',            'Á' => 'A',            'Â' => 'A',            'Ã' => 'A',            'Ä' => 'A',
+            'Ç' => 'C',
+            'È' => 'E',            'É' => 'E',            'Ê' => 'E',            'Ë' => 'E',
+            'Ì' => 'I',            'Í' => 'I',            'Î' => 'I',            'Ï' => 'I',
+            'Ñ' => 'N',
+            'Ò' => 'O',            'Ó' => 'O',            'Ô' => 'O',            'Õ' => 'O',            'Ö' => 'O',
+            'Ù' => 'U',            'Ú' => 'U',            'Û' => 'U',            'Ü' => 'U',
+            'Ý' => 'Y'
+    ];
+
+    private $tabCat = [
+        's'     => 'Senior',
+        'v1'    => 'Vétéran1',
+        'v2'    => 'Vétéran 2',
+        'v3'    => 'Vétéran 3',
+        'c'     => 'Cadet',
+        'e'     => 'Espoir',
+        'j'     => 'Junior',
+        '0'     => '-',
+        'v4'    => 'Vétéran 4',
+        'se'    => 'Senior',
+        'es'    => 'Espoir',
+        'ca'    => 'Cadet',
+        'ju'    => 'Junior',
+        'senio' => 'Senior',
+        'veter' => 'Vétéran',
+        'junio' => 'Junior',
+        'espoi' => 'Espoir',
+        'cadet' => 'Cadet',
+        'v5'    => 'Vétéran 5'
+];
     /**
      * ConvertDatabase constructor.
      */
     public function __construct()
     {
-        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross');
+        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross_old');
         $this->baseDst = new mysqli('localhost', 'root', '', 'cross');
+
+        $this->baseSrc->set_charset('utf8');
+        $this->baseDst->set_charset('utf8');
     }
 
     /**
@@ -78,6 +122,26 @@ class ConvertDatabase
         echo $query . "\n\n";
         if (!$m->query($query)) {
             echo "Erreur SQL : " . $m->error . "\n";
+        }
+    }
+
+    /**
+     * @param $field
+     * @param $value
+     * @return bool
+     */
+    private function categorie($field, $value)
+    {
+        $cat = strtr($value,$this->translation);
+        $cat = strtolower($cat);
+
+        if (isset($this->tabCat[$cat])) {
+            $this->putSQL($field, "'" . $this->tabCat[$cat] . "'");
+            return true;
+        } else {
+            echo "Erreur : Correspondance catégorie non trouvée : " . $cat . "\n";
+            $this->putSQL($field, "'" . $cat . "'");
+            return false;
         }
     }
 
