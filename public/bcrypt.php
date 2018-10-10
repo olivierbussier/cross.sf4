@@ -97,7 +97,7 @@ class ConvertDatabase
      */
     public function __construct()
     {
-        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross_old');
+        $this->baseSrc = new mysqli('localhost', 'root', '', 'cross');
         $this->baseDst = new mysqli('localhost', 'root', '', 'cross');
 
         $this->baseSrc->set_charset('utf8');

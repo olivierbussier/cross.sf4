@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+{% block main_page %}
+
+{#    {% form_theme form _self %}
+    {%- block radio_widget -%}
+		<input type="radio" fhfh="fff" name="{{ name }}" id="radio_{{ value }}" value="{{ value }}"{% if checked %} checked="checked"{% endif %} />
+    {%- endblock radio_widget -%}
+#}
+    {% import 'macros/bouton.html.twig' as control %}
+
+	<div class="container">
+
+		<div class="col-xs-12">
+			<h3>Test</h3>
+		</div>
+		<div class="col-xs-12">
+			{{ form_start(form)  }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+		</div>
+	</div>
+
+{% endblock %}
+
