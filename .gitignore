@@ -23,3 +23,5 @@ public/temp
 
 sass-tools/.sass-cache/
 sass-tools/node_modules/
+
+phploy\.ini

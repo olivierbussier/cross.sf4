@@ -6,8 +6,8 @@ namespace App\Controller;
 use App\Classes\Galerie\GalConfig;
 use App\Classes\Galerie\GenImages;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GalerieController extends AbstractController
@@ -39,7 +39,7 @@ class GalerieController extends AbstractController
      *
      * @param string $repertoire
      * @param string $image
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      *
      * @Route("/galerie/display/{repertoire}/{image}", name="display_img")
      */
@@ -93,13 +93,54 @@ class GalerieController extends AbstractController
     }
 
     /**
+     * Index de toutes les galeries disponibles
+     *
+     * @return Response
+     * @Route("/galerie/index/", name="galeries")
+     */
+    public function galeries(Request $request)
+    {
+        // Lister les galeries
+
+        $conf = $this->getParameter('conf');
+        $base = $this->getParameter('kernel.project_dir') . '/public';
+        $path = $conf['galerie.path_img'];
+        $dirs = GalConfig::GetDir($base . '/' .$path);
+
+        // Construction des galeries a afficher
+
+        $gal_array = [];
+
+        foreach ($dirs as $v) {
+            $gal = [];
+            $gal['protected'] = false;
+            $gal['path'] = $v;
+            $gal['title'] = GalConfig::convertTitle($v);
+            $files = GalConfig::getImgFiles($path . '/' . $v);
+            $rndfile = $files[array_rand($files)];
+            if (GalConfig::getExt($rndfile) == 'mp4') {
+                $rndfile = GalConfig::setExt($rndfile,'gif');
+            }
+            $gal['rndfile'] = $rndfile;
+            $gal['random']  = rand(0, 99999999);
+            $gal['text']    = GalConfig::displayInfoText($path . '/' . $v);
+            $gal_array[] = $gal;
+        }
+        return $this->render('galerie/allGaleries.html.twig', [
+            'baseImagesThumb'   => $conf['galerie.path_thumb'],
+            'baseImagesSized'   => $conf['galerie.path_sized'],
+            'dirs'              => $gal_array
+        ]);
+    }
+
+    /**
      * Affichage d'une galerie séléctionnée
      * Si {slug} est vide alors redirection vers la route d'index des galeries
      *
      * @param Request $request
      * @param string $repertoire
      * @param int $page
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      *
      * @Route("/galerie/{repertoire}/{page}", name="galerie")
      */
@@ -174,49 +215,9 @@ class GalerieController extends AbstractController
     }
 
     /**
-     * Index de toutes les galeries disponibles
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/galerie/", name="galeries")
-     */
-    public function galeries(Request $request)
-    {
-        // Lister les galeries
-
-        $conf = $this->getParameter('conf');
-        $base = $this->getParameter('kernel.project_dir') . '/public';
-        $path = $conf['galerie.path_img'];
-        $dirs = GalConfig::GetDir($base . '/' .$path);
-
-        // Construction des galeries a afficher
-
-        $gal_array = [];
-
-        foreach ($dirs as $v) {
-            $gal = [];
-            $gal['protected'] = false;
-            $gal['path'] = $v;
-            $gal['title'] = GalConfig::convertTitle($v);
-            $files = GalConfig::getImgFiles($path . '/' . $v);
-            $rndfile = $files[array_rand($files)];
-            if (GalConfig::getExt($rndfile) == 'mp4') {
-                $rndfile = GalConfig::setExt($rndfile,'gif');
-            }
-            $gal['rndfile'] = $rndfile;
-            $gal['random']  = rand(0, 99999999);
-            $gal['text']    = GalConfig::displayInfoText($path . '/' . $v);
-            $gal_array[] = $gal;
-        }
-        return $this->render('galerie/allGaleries.html.twig', [
-            'baseImagesThumb'   => $conf['galerie.path_thumb'],
-            'baseImagesSized'   => $conf['galerie.path_sized'],
-            'dirs'              => $gal_array
-        ]);
-    }
-    /**
      * Création de tous les thumbnails de toutes les galeries disponibles
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      * @Route("/intranet/admin_galeries/", name="admin_galeries")
      */
     public function admin_galeries(Request $request)
@@ -250,5 +251,14 @@ class GalerieController extends AbstractController
             'baseImagesSized'   => $conf['galerie.path_sized'],
             'dirs'              => $gal_array
         ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function manageException()
+    {
+        $tt = new Response();
+        return $tt;
     }
 }

@@ -3,13 +3,14 @@
 namespace App\Controller\Security;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SecurityController extends Controller
+class SecurityController extends AbstractController
 {
     /**
      * @Route("/connexion", name="connexion")
