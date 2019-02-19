@@ -252,13 +252,4 @@ class GalerieController extends AbstractController
             'dirs'              => $gal_array
         ]);
     }
-
-    /**
-     * @return Response
-     */
-    public function manageException()
-    {
-        $tt = new Response();
-        return $tt;
-    }
 }
