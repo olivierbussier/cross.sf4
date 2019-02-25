@@ -8,11 +8,14 @@ use App\Form\ChoixCourseType;
 use App\Form\EcrireType;
 use Swift_Mailer;
 use Swift_Message;
+use Swift_TransportException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BaseController extends AbstractController
@@ -20,7 +23,7 @@ class BaseController extends AbstractController
     /**
      * @Route("/", name="root")
      * @param RegistryInterface $doctrine
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index(RegistryInterface $doctrine)
     {
@@ -43,7 +46,7 @@ class BaseController extends AbstractController
      * @Route("/preview/{blogId}", name="root_preview")
      * @param RegistryInterface $doctrine
      * @param string $blogId
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexPreviewBlog(RegistryInterface $doctrine, $blogId = '')
     {
@@ -117,7 +120,7 @@ class BaseController extends AbstractController
      * @Route("/resultats", name="resultats")
      * @param RegistryInterface $doctrine
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function resultats(RegistryInterface $doctrine, Request $request)
     {
@@ -195,6 +198,9 @@ class BaseController extends AbstractController
 
     /**
      * @Route("/ecrire", name="ecrire")
+     * @param Request $request
+     * @param Swift_Mailer $mailer
+     * @return RedirectResponse|Response
      */
     public function ecrire(Request $request,Swift_Mailer $mailer)
     {
@@ -205,7 +211,7 @@ class BaseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contactFormData = $form->getData();
-            $message = (new Swift_Message('You Got Mail!'))
+            $message = (new Swift_Message('Mail de la part du site web \'cross-biviers.fr\''))
                 ->setFrom($contactFormData['from'])
                 ->setTo('contact@cross-biviers.fr')
                 ->setBody(
@@ -214,9 +220,16 @@ class BaseController extends AbstractController
                     )
             ;
 
-            $res = $mailer->send($message);
-            $this->addFlash('info', 'Message envoyé');
-            return $this->redirectToRoute('ecrire');
+            try {
+                $res = $mailer->send($message, $fail);
+                $this->addFlash('info', "$res : Message envoyé");
+                return $this->redirectToRoute('ecrire');
+
+            } catch (Swift_TransportException $e) {
+                return $this->render('pages/error.html.twig',[
+                    'err' => $e
+                ]);
+            }
         }
 
         return $this->render('pages/ecrire.html.twig',[
