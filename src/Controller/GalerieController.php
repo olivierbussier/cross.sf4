@@ -107,6 +107,7 @@ class GalerieController extends AbstractController
         $path = $conf['galerie.path_img'];
         $dirs = GalConfig::GetDir($base . '/' .$path);
 
+        sort($dirs);
         // Construction des galeries a afficher
 
         $gal_array = [];
