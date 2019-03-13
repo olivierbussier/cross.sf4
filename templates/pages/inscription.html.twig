@@ -18,35 +18,15 @@
 				<li>Par courrier</li>
 				<li>Directement sur place à partir de la veille de la course</li>
 			</ul>
-			<p>Attention : La participation à la course est soumise a l'acceptation sans réserve du reglement que vous trouverez <a href=" {{ asset('docs/reglement_2017.pdf') }}" target="_blank">ICI</a>.</p>
+			<p>Attention : La participation à la course est soumise a l'acceptation sans réserve du reglement
+				que vous trouverez <a href=" {{ asset('docs/reglement_2017.pdf') }}" target="_blank">ICI</a>.</p>
+			<p>Votre dossard vous sera remis directement le jour de la course à partir de 8h30.</p>
+			<p>Nous vous conseillons de vous inscrire par internet afin d'éviter
+				l'affluance du dimanche matin</p>
 		</div>
 
-		<div class="col-xs-12 col-md-4">
-			<h2>Par Internet</h2>
-			<p>C'est le mode d'inscription de loin le plus simple et le plus rapide.</p>
-			<p>Il suffit pour cela de suivre <a href="#inscr">un des liens dans le tableau ci-dessous</a>, en fonction de la course que vous choisissez.</p>
-			<p>Tout le processus d'inscription est réalisé sur ce site, y compris le paiement sécurisé en ligne.</p>
-			<p>Dans ce cas, votre dossard vous sera remis sans attente le jour de la course à partir de 8h30.</p>
-			<img class ="w100" src="{{ asset('im/a1.jpg') }}">
-		</div>
-		<div class="col-xs-12 col-md-4">
-			<h2>Par courrier</h2>
-			<p>L'inscription par courrier est possible, dans ce cas, veuillez nous renvoyer <b><u>pour chaque participant</u></b> les documents suivants :</p><ul>
-				<li>Le bulletin d'inscription à remplir, que vous trouverez <a href="{{ asset('docs/inscription_2017.pdf') }}" target="_blank">ICI</a></li>
-				<li>Un certificat médical (charger et imprimer ce modèle pour votre médecin <a href="{{ asset('docs/certif_medical.pdf') }}" target="_blank">ICI</a>)</li>
-				<li>Le règlement par chèque (voir les tarifs ci-dessous) à l'ordre de "Biviers Omnisports"&nbsp;</li>
-			</ul>
-			<p>L'adresse pour retourner votre dossier se trouve sur le bulletin d'inscription.<br><br>
-		</div>
-		<div class="col-xs-12 col-md-4">
-			<h2>Sur place</h2>
-			<p>Une permanence est organisée de 14h00 à 18h00 la Samedi précédant la course, sur la place du village, salle de l'ancienne mairie, à proximité du bar du village.</p>
-			<p>Et le jour de la course, il est possible de s'inscrire à partir de 8h00 sur le lieu de départ, et ce jusqu'à 15mn avant le départ des courses, mais attention, il y a beaucoup d'affluence, préférez <a href="#" target="_blank">l'inscription par internet</a></p>.
-			<img class ="w100" src="{{ asset('im/a2.jpg') }}">
-		</div>
-		<a name="inscr" />
 		<div class="col-xs-12">
-			<h1>Les tarifs des inscriptions :</h1>
+			<h1>Par Internet</h1>
 			<div class="table-responsive">
 				<table class="table">
 					<tr><th>Course</th><th>Heure de départ</th><th>Prix</th><th>Inscription</th></tr>
@@ -56,7 +36,7 @@
 								"S'inscrire en ligne",
 								"http://inscriptions.perfevent.com/biviers2018/register/28802",
 								'_inscr',
-								"btn-block btn-success") }}
+								"btn-block btn-success disabled") }}
 						</td>
 					</tr>
 					<tr><td>Grand parcours (10Km)</td>    <td>9h15</td> <td>9€<sup>*</sup></td>
@@ -65,7 +45,7 @@
 								"S'inscrire en ligne",
 								"http://inscriptions.perfevent.com/biviers2018/register/28803",
 								'_inscr',
-								'btn-block btn-success') }}
+								'btn-block btn-success disabled') }}
 						</td>
 					</tr>
 					<tr><td>Parcours marche (6Km)</td>    <td>8h45</td> <td>5€<sup>*</sup></td>
@@ -74,7 +54,7 @@
 								"S'inscrire en ligne",
 								"http://inscriptions.perfevent.com/biviers2018/register/28804",
 								'_inscr',
-								'btn-block btn-success') }}
+								'btn-block btn-success disabled') }}
 						</td>
 					</tr>
 					<tr><td>Petit parcours (3Km)</td>     <td>9h30</td> <td>5€<sup>*</sup></td>
@@ -83,7 +63,7 @@
 								"S'inscrire en ligne",
 								"http://inscriptions.perfevent.com/biviers2018/register/28805",
 								'_inscr',
-								'btn-block btn-success') }}
+								'btn-block btn-success disabled') }}
 						</td>
 					</tr>
 					<tr><td>Parcours Jeunes</td>          <td>11h00</td><td>3€<sup>*</sup></td>
@@ -98,14 +78,30 @@
 			</div>
 			<p><sup>*</sup> : 1&euro; sera reversé au don du sang</p>
 		</div>
-		<div class="col-xs-12">
-			<p><div id="pubtab">Merci de visiter nos&nbsp;sponsorts car sans eux nous ne pourrions pas avoir autant de lots pour vous récompenser.</div></p>
-		</div>
-		<div class="col-xs-12">
 
+		<div class="col-xs-12 col-md-6">
+			<h2>Par courrier</h2>
+			<p>Il suffit de nous renvoyer <b><u>pour chaque participant</u></b> les documents suivants :</p><ul>
+				<li>Le bulletin d'inscription à remplir, que vous trouverez
+                    <a href="{{ asset('docs/inscription_2017.pdf') }}" target="_blank">ICI</a></li>
+				<li>Un certificat médical (charger et imprimer ce modèle pour votre médecin
+                    <a href="{{ asset('docs/certif_medical.pdf') }}" target="_blank">ICI</a>)</li>
+				<li>Le règlement par chèque (voir les tarifs ci-dessous) à l'ordre de "Biviers Omnisports"&nbsp;</li>
+			</ul>
+			<p>L'adresse pour retourner votre dossier se trouve sur le bulletin d'inscription.<br><br>
 		</div>
-		<div class="col-xs-12">
+		<div class="col-xs-12 col-md-6">
+			<h2>Sur place</h2>
+			<p>Une permanence est organisée de 14h00 à 18h00 le samedi précédant la course,
+                sur la place du village, salle de l'ancienne mairie, à proximité du bar du village.</p>
+			<p>Et le jour de la course, il est possible de s'inscrire à partir de 8h00 sur le lieu
+                de départ, et ce jusqu'à 15mn avant le départ des courses</p>.
+			<img class ="w100" src="{{ asset('im/a2.jpg') }}">
+		</div>
 
+		<div class="col-xs-12">&nbsp;</div>
+
+		<div class="col-xs-12">
 		</div>
 	</div>
 {% endblock %}

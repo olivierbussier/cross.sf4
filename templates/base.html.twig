@@ -78,8 +78,8 @@
                 <div id="page" class="round">
                     <div id="bandeau">
                         <picture>
-                            <source media="(min-width: 450px)" srcset="{{ asset("im/bandeau.jpg") }}">
-                            <source media="(max-width: 450px)" srcset="{{ asset("im/bandeau360.jpg") }}">
+                            <source media="(min-width: 450px)" srcset="{{ asset("im/bandeau360_cr.jpg") }}">
+                            <source media="(max-width: 450px)" srcset="{{ asset("im/bandeau360_cr.jpg") }}">
                             <img src="{{ asset("im/bandeau_def.jpg") }}">
                         </picture>
                     </div>
@@ -93,7 +93,7 @@
                                     <li><a href="#">Les courses</a>
                                         <ul>
                                             {{ Menu.item('trail', 'Le Trail découverte') }}
-                                            {{ Menu.item('10km', 'Le grand parcours') }}
+                                            {{ Menu.item('10km', 'Le Cross') }}
                                             {{ Menu.item('marche', 'Le parcours marche') }}
                                             {{ Menu.item('3km', 'Le petit parcours') }}
                                             {{ Menu.item('jeunes', 'Les parcours jeune sur le stade') }}
@@ -156,7 +156,7 @@
 
                     {% set tag = readfile(asset('.revision')) %}
 
-                    <p>Copyright &copy; 2007-2017 GUC Plongée - {{ tag }}</p>
+                    <p>Copyright &copy; 2007-2017 Cross de Biviers - {{ tag }}</p>
 
                 </div>
                 <div class="site-cache" id="site-cache"></div>
