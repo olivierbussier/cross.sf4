@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head>
+<html lang="fr"><head>
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50183564-2"></script>
     <script>
@@ -74,13 +74,40 @@
                 </script>
             </div>
 
+            <style>
+                @font-face {
+                    font-family: 'osw';
+                    src: url('{{ asset('css/fonts/osw.eot') }}') format('eot');
+                    src: url('{{ asset('css/fonts/osw.ttf') }}') format('truetype'),
+                         url('{{ asset('css/fonts/osw.woff') }}') format('woff'),
+                         url('{{ asset('css/fonts/osw.svg') }}') format('svg');
+                    font-weight: normal;
+                    font-style: normal;
+                }
+                .cont_bandeau {
+                    position: relative;
+                    text-align: center;
+                    color: white;
+                }
+                .date_cross {
+                    position: absolute;
+                    font-family: osw, sans-serif;
+                    font-size: 6em;
+                    color: white;
+                    transform: rotate(-10deg);
+                    bottom: 0.35em;
+                    left: 2em;
+                }
+            </style>
             <div class="site-pusher">
                 <div id="page" class="round">
-                    <div id="bandeau">
+
+                    <div id="bandeau" class="cont_bandeau">
+                        <div id="date_cross" class="date_cross">[{{ dateEdition.date | date('d/m/Y') }}]</div>
                         <picture>
                             <source media="(min-width: 450px)" srcset="{{ asset("im/bandeau360_cr.jpg") }}">
                             <source media="(max-width: 450px)" srcset="{{ asset("im/bandeau360_cr.jpg") }}">
-                            <img src="{{ asset("im/bandeau_def.jpg") }}">
+                            <img src="{{ asset("im/bandeau360_cr.jpg") }}">
                         </picture>
                     </div>
 

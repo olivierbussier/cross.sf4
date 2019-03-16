@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\CrossConfig;
 use App\Entity\Resultat;
+use App\Form\CrossConfigEditType;
 use App\Form\SaisieResultatsType;
+use App\Repository\CrossConfigRepository;
 use App\Repository\ResultatRepository;
 use DateTime;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -57,6 +60,45 @@ class IntranetController extends AbstractController
     public function index()
     {
         return $this->render('intranet/index.html.twig');
+    }
+
+    /**
+     * @Route("/intranet/admin_config", name="intranet_config")
+     * @param RegistryInterface $doctrine
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function crossConfig(RegistryInterface $doctrine, Request $request)
+    {
+        $config = new CrossConfig();
+
+        /** @var CrossConfigRepository $configRepo */
+        $configRepo = $doctrine->getRepository(CrossConfig::class);
+        $em = $this->getDoctrine()->getManager();
+
+        $date = $configRepo->getDateEdition();
+
+        $form = $this->createForm(CrossConfigEditType::class, $date);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $cfg = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            // $entityManager = $this->getDoctrine()->getManager();
+            $em->persist($cfg);
+            $em->flush();
+
+            //return $this->redirectToRoute('task_success');
+        }
+
+        return $this->render('intranet/admin_config.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

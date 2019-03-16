@@ -6,3 +6,4 @@ twig:
 
     globals:
         conf: '%conf%'
+        dateEdition: '@App\Services\DateService'
