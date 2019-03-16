@@ -15,7 +15,6 @@
             {% endif %}
 
             <form action="{{ path('connexion') }}" method="post">
-
                 <div class="form-group">
                     <input placeholder="Username" required name="_username" type="text" class="form-control" value="{{ last_username }}">
                 </div>
@@ -28,6 +27,7 @@
                     <button type="submit" class="btn btn-success">Connexion !</button>
                 </div>
             </form>
+
         </div>
     </div>
 {% endblock %}
