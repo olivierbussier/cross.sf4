@@ -32,38 +32,62 @@
 					<tr><th>Course</th><th>Heure de départ</th><th>Prix</th><th>Inscription</th></tr>
 					<tr><td>Trail Découverte (14.5Km)</td><td>9h00</td> <td>11€<sup>*</sup></td>
 						<td>
+							{% if liens.fTrail %}
+								{% set fDis = '' %}
+							{% else %}
+								{% set fDis = ' disabled' %}
+							{% endif %}
+
 							{{ control.bouton(
 								"S'inscrire en ligne",
-								"http://inscriptions.perfevent.com/biviers2018/register/28802",
+								liens.lienTrail,
 								'_inscr',
-								"btn-block btn-success disabled") }}
+								'btn-block btn-success' ~ fDis) }}
 						</td>
 					</tr>
 					<tr><td>Grand parcours (10Km)</td>    <td>9h15</td> <td>9€<sup>*</sup></td>
 						<td>
+							{% if liens.fCross %}
+								{% set fDis = '' %}
+							{% else %}
+								{% set fDis = ' disabled' %}
+							{% endif %}
+
 							{{ control.bouton(
 								"S'inscrire en ligne",
-								"http://inscriptions.perfevent.com/biviers2018/register/28803",
+								liens.lienCross,
 								'_inscr',
-								'btn-block btn-success disabled') }}
+								'btn-block btn-success' ~ fDis) }}
 						</td>
 					</tr>
 					<tr><td>Parcours marche (6Km)</td>    <td>8h45</td> <td>5€<sup>*</sup></td>
 						<td>
+							{% if liens.fMarche %}
+								{% set fDis = '' %}
+							{% else %}
+								{% set fDis = ' disabled' %}
+							{% endif %}
+
 							{{ control.bouton(
 								"S'inscrire en ligne",
-								"http://inscriptions.perfevent.com/biviers2018/register/28804",
+								liens.lienMarche,
 								'_inscr',
-								'btn-block btn-success disabled') }}
+								'btn-block btn-success' ~ fDis) }}
 						</td>
 					</tr>
 					<tr><td>Petit parcours (3Km)</td>     <td>9h30</td> <td>5€<sup>*</sup></td>
 						<td>
+							{% if liens.fPetit %}
+								{% set fDis = '' %}
+							{% else %}
+								{% set fDis = ' disabled' %}
+							{% endif %}
+
 							{{ control.bouton(
 								"S'inscrire en ligne",
-								"http://inscriptions.perfevent.com/biviers2018/register/28805",
+								liens.lienPetit,
 								'_inscr',
-								'btn-block btn-success disabled') }}
+								'btn-block btn-success' ~ fDis) }}
 						</td>
 					</tr>
 					<tr><td>Parcours Jeunes</td>          <td>11h00</td><td>3€<sup>*</sup></td>

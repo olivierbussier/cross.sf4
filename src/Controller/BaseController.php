@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Blog;
+use App\Entity\CrossConfig;
 use App\Entity\Resultat;
 use App\Form\ChoixCourseType;
 use App\Form\EcrireType;
+use App\Repository\CrossConfigRepository;
 use Swift_Mailer;
 use Swift_Message;
 use Swift_TransportException;
@@ -110,10 +112,19 @@ class BaseController extends AbstractController
 
     /**
      * @Route("/inscription", name="inscription")
+     * @param RegistryInterface $doctrine
+     * @return Response
      */
-    public function inscription()
+    public function inscription(RegistryInterface $doctrine)
     {
-        return $this->render('pages/inscription.html.twig');
+        $configRepo = $doctrine->getRepository(CrossConfig::class);
+
+        /** @var CrossConfigRepository $configRepo */
+        $config = $configRepo->getConfig();
+
+        return $this->render('pages/inscription.html.twig', [
+            'liens' => $config
+        ]);
     }
 
     /**

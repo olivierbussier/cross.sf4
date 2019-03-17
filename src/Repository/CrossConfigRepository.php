@@ -23,7 +23,7 @@ class CrossConfigRepository extends ServiceEntityRepository
      * @return CrossConfig[] Returns an array of CrossConfig objects
      */
 
-    public function getDateEdition()
+    public function getConfig()
     {
         return ($this->createQueryBuilder('c')
             ->setMaxResults(10)
@@ -31,17 +31,4 @@ class CrossConfigRepository extends ServiceEntityRepository
             ->getResult())[0]
         ;
     }
-
-
-    /*
-    public function findOneBySomeField($value): ?CrossConfig
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -23,8 +23,55 @@
             <p>Entrez ici la date de la course, cette date sera affichée sur la banière</p>
 
             {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button>Go!</button>
+
+            <div class="col-xs-12">
+                {{ form_label(form.dateEdition) }}
+                {{ form_widget(form.dateEdition) }}
+            </div>
+
+            <div class="col-xs-9">
+                {{ form_label(form.lienTrail, 'Lien vers les inscriptions du trail') }}
+                {{ form_widget(form.lienTrail) }}
+            </div>
+
+            <div class="col-xs-3">
+                {{ form_label(form.fTrail, 'Inscriptions') }}
+                {{ form_widget(form.fTrail) }}
+            </div>
+
+            <div class="col-xs-9">
+                {{ form_label(form.lienCross, 'Lien vers les inscriptions du cross') }}
+                {{ form_widget(form.lienCross) }}
+            </div>
+
+            <div class="col-xs-3">
+                {{ form_label(form.fCross, 'Inscriptions') }}
+                {{ form_widget(form.fCross) }}
+            </div>
+
+            <div class="col-xs-9">
+                {{ form_label(form.lienMarche, 'Lien vers les inscriptions du parcours marche') }}
+                {{ form_widget(form.lienMarche) }}
+            </div>
+
+            <div class="col-xs-3">
+                {{ form_label(form.fMarche, 'Inscriptions') }}
+                {{ form_widget(form.fMarche) }}
+            </div>
+
+            <div class="col-xs-9">
+                {{ form_label(form.lienPetit, 'Lien vers les inscriptions du petit Parcours') }}
+                {{ form_widget(form.lienPetit) }}
+            </div>
+
+            <div class="col-xs-3">
+                {{ form_label(form.fPetit, 'Inscriptions') }}
+                {{ form_widget(form.fPetit) }}
+            </div>
+
+            <div class="col-xs-12">
+                <button class="btn btn-default btn-block btn-success">Go!</button>
+            </div>
             {{ form_end(form) }}
         </div>
 

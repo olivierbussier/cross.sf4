@@ -70,13 +70,11 @@ class IntranetController extends AbstractController
      */
     public function crossConfig(RegistryInterface $doctrine, Request $request)
     {
-        $config = new CrossConfig();
-
         /** @var CrossConfigRepository $configRepo */
         $configRepo = $doctrine->getRepository(CrossConfig::class);
-        $em = $this->getDoctrine()->getManager();
+        $em = $doctrine->getManager();
 
-        $date = $configRepo->getDateEdition();
+        $date = $configRepo->getConfig();
 
         $form = $this->createForm(CrossConfigEditType::class, $date);
 
