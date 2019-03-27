@@ -6,19 +6,11 @@
         ['Stéphane Dothée'					, ''							,'Président'],
         ['Guy Chaboud'						, ''							,'Vice-président'],
         ['Mario Mitaut'						, ''							,'Secrétaire'],
-        ['Muriel Ruel'						, ''							,'Trésorier/Web'],
-        ['Patrick Torres'					, ''							,'Référend technique']
-    ] %}
-
-    {%  set animation = [
-        ['Elisabeth Joppe'					, ''							,'Ravitaillement'],
-        ['Muriel Mattersdorf'				, ''							,'Ravitaillement'],
-        ['Sylvie Bussier'					, ''							,'Ravitaillement'],
-        ['Gaele Le Gouis'					, ''							,'Ravitaillement']
+        ['Muriel Ruel'						, ''							,'Trésorier/Web']
     ] %}
 
     {%  set dds = [
-        ['Janine BARBIER'					, 'Barbier-Janine.jpg'			,'Présidente du Don du Sang local']
+        ['Janine BARBIER'					, ''			,'Présidente du Don du Sang local']
     ] %}
 
 
@@ -30,7 +22,7 @@
 		<div class="col-xs-12">
 			<h3>Le who's who du Cross de Biviers plongée</h3>
 			<a href="{{ asset('im/organisateurs.jpg') }}" target=_blank>
-				<img src="{{ asset('im/organisateurs.jpg') }}"  class="w100">
+				<img src="{{ asset('im/organisateurs.jpg') }}"  class="w100" alt="Orga">
 			</a>
 		</div>
 
@@ -40,12 +32,7 @@
 		</div>
 
 		<div class="col-xs-12">
-			<h3>Responsables des sections et activités</h3>
-            {{ affi.aff_members(animation) }}
-		</div>
-
-		<div class="col-xs-12">
-			<h3>Les encadrants "scaphandre"</h3>
+			<h3>Don du sang</h3>
             {{ affi.aff_members(dds) }}
 		</div>
 
