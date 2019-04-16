@@ -28,7 +28,7 @@ header {
 	@include border-radius($rad);
 }
 
-/* Page */	
+/* Page */
 .page {
 	margin: 0 auto;
 	padding: 0;
@@ -36,7 +36,7 @@ header {
     //@include box-shadow(0px 3px 9px rgba(0,0,0,0.5));
 }
 
-/* Zone du bandeau GUC */
+/* Zone du bandeau */
 #bandeau {
   margin: 0;
   width:100%;

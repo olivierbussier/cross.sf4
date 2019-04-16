@@ -75,15 +75,6 @@
             </div>
 
             <style>
-                @font-face {
-                    font-family: 'osw';
-                    src: url('{{ asset('css/fonts/osw.eot') }}') format('eot');
-                    src: url('{{ asset('css/fonts/osw.ttf') }}') format('truetype'),
-                         url('{{ asset('css/fonts/osw.woff')}}') format('woff'),
-                         url('{{ asset('css/fonts/osw.svg') }}') format('svg');
-                    font-weight: normal;
-                    font-style: normal;
-                }
                 .cont_bandeau {
                     position: relative;
                     text-align: center;
@@ -91,12 +82,12 @@
                 }
                 .date_cross {
                     position: absolute;
-                    font-family: osw, sans-serif;
+                    font-family: calibri, sans-serif;
                     font-size: 6em;
                     color: white;
-                    transform: rotate(-10deg);
-                    bottom: 0.35em;
-                    left: 2em;
+                    /*transform: rotate(-10deg);*/
+                    bottom: 0em;
+                    left: 1em;
                 }
             </style>
             <div class="site-pusher">
@@ -104,7 +95,7 @@
 
                     <div id="bandeau" class="cont_bandeau">
 
-                        <div id="date_cross" class="date_cross">[{{ config.dateEdition | date('d/m/Y') }}]</div>
+                        <div id="date_cross" class="date_cross">{{ config.dateEdition | date('d/m/Y') }}</div>
 
                         <picture>
                             <source media="(min-width: 450px)" srcset="{{ asset("im/bandeau360_cr.jpg") }}">
