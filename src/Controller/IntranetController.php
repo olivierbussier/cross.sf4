@@ -128,7 +128,7 @@ class IntranetController extends AbstractController
             $anneeImport = $result->getAnneeCross();
 
             try {
-                $fd = $file->move('/temp', "file$anneeImport.csv");
+                $fd = $file->move('temp', "file$anneeImport.csv");
 
                 if($lignes = file($fd->getPathname())) {
                     /**
