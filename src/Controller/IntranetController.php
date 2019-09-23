@@ -9,6 +9,7 @@ use App\Form\SaisieResultatsType;
 use App\Repository\CrossConfigRepository;
 use App\Repository\ResultatRepository;
 use DateTime;
+use mysql_xdevapi\Exception;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -151,7 +152,23 @@ class IntranetController extends AbstractController
 
                     $temps = $this->convertTemps(trim($value[4]));
                     $ecart = $this->convertTemps(trim($value[5]));
-                    $vitesse = $this->calcVitesse($temps,10.0);
+                    $course = $value[1];
+
+                    switch($course) {
+                        case 'Cross 3Km':
+                            $dist = 3;
+                            break;
+                        case 'Cross 10Km':
+                            $dist = 10;
+                            break;
+                        case 'Trail 14.5Km':
+                            $dist = 15;
+                            break;
+                        default:
+                            throw new Exception("Course inconnue");
+                            break;
+                    }
+                    $vitesse = $this->calcVitesse($temps, $dist);
 
                     $result->setAnneeCross  ($annee    )
                            ->setCourse      (trim($value[1]))
@@ -160,11 +177,11 @@ class IntranetController extends AbstractController
                            ->setTemps       ($temps)
                            ->setEcart       ($ecart)
                            ->setVitesse     ($vitesse)
-                           ->setNom         (trim($value[7]))
-                           ->setPrenom      (trim($value[8]))
-                           ->setCategorie   (trim($value[9]))
-                           ->setSexe        (trim($value[10]))
-                           ->setVille       (trim($value[11]));
+                           ->setNom         (trim($value[6]))
+                           ->setPrenom      (trim($value[7]))
+                           ->setCategorie   (trim($value[8]))
+                           ->setSexe        (trim($value[9]))
+                           ->setVille       (trim($value[10]));
 
                     $em->persist($result);
 
